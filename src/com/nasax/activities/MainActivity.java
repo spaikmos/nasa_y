@@ -1,4 +1,4 @@
-package com.parse.starter;
+package com.nasax.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 import com.parse.R;
 
-public class ParseStarterProjectActivity extends Activity {
+public class MainActivity extends Activity {
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

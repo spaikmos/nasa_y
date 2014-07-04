@@ -1,4 +1,4 @@
-package com.parse.starter;
+package com.nasax.activities;
 
 import android.app.Application;
 
@@ -7,7 +7,7 @@ import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-public class ParseApplication extends Application {
+public class NasaXApplication extends Application {
 
 	@Override
 	public void onCreate() {
