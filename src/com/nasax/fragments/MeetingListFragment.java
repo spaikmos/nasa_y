@@ -1,9 +1,11 @@
 package com.nasax.fragments;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,10 @@ import com.nasax.activities.R;
 import com.nasax.adapters.EventArrayAdapter;
 import com.nasax.listeners.EndlessScrollListener;
 import com.nasax.models.Event;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import eu.erikw.PullToRefreshListView;
 import eu.erikw.PullToRefreshListView.OnRefreshListener;
@@ -58,8 +64,23 @@ public class MeetingListFragment extends Fragment {
 		});
 		lvEvents.setAdapter(aEvents);
 
-		//populateTimeline(0, 1);
-
+		populateList();
+		
 		return v;
+	}
+	
+	private void populateList() {
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
+		query.whereExists("objectId");
+		query.findInBackground(new FindCallback<ParseObject>() {
+		    public void done(List<ParseObject> eventList, ParseException e) {
+		        if (e == null) {
+		        	Log.d("debug", "Parse Query success!");
+		        	aEvents.addAll(Event.fromParseObjectsList(eventList));
+		        } else {
+		            Log.d("debug", "Parse Query fail");
+		        }
+		    }
+		});		
 	}
 }

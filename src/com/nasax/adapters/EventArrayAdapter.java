@@ -47,7 +47,7 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 		ImageLoader imageLoader = ImageLoader.getInstance();
 		// Populate views with tweet data
 		imageLoader.displayImage(event.getImageUrl(), ivEventImage);
-		tvEventTitle.setText(event.getEventTitle());
+		tvEventTitle.setText(event.getEventName());
 		tvEventLocation.setText(event.getLocation());
 		// TODO:  Set the timestamp based on EventStart - currentTime
 		//tvRelativeTimestamp.setText(getRelativeTimeAgo(event.getStartTime()));
