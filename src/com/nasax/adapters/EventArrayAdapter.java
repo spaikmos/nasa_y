@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -51,19 +52,17 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 		tvEventLocation.setText(event.getLocation());
 		// TODO:  Set the timestamp based on EventStart - currentTime
 		//tvRelativeTimestamp.setText(getRelativeTimeAgo(event.getStartTime()));
-		// Set OnClickListener for ImageView:
-		ivEventImage.setTag(event.getId());
-		ivEventImage.setOnClickListener(new OnClickListener() {
-
+		// Set OnClickListener for the whole line
+		v.setTag(event.getObjectId());
+		v.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getContext(), EventActivity.class);
+				Log.d("debug", "starting intent with objectId = " + v.getTag());
 				i.putExtra("eventId", (String) v.getTag());
 				appContext.startActivity(i);
-			}
-
+			}			
 		});
-
 		return v;
 	}
 	

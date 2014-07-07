@@ -70,15 +70,15 @@ public class MeetingListFragment extends Fragment {
 	}
 	
 	private void populateList() {
+		// TODO:  Need to pull data based on the event startTime field.
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
 		query.whereExists("objectId");
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> eventList, ParseException e) {
 		        if (e == null) {
-		        	Log.d("debug", "Parse Query success!");
 		        	aEvents.addAll(Event.fromParseObjectsList(eventList));
 		        } else {
-		            Log.d("debug", "Parse Query fail");
+		            Log.d("debug", "populateList:  Parse Query failed!");
 		        }
 		    }
 		});		
