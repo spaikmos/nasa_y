@@ -19,8 +19,6 @@ public class EventActivity extends FragmentActivity {
 		setContentView(R.layout.activity_event);
 		setupTabs();
 		String id = getIntent().getStringExtra("eventId");
-		Toast.makeText(this, "objectId = " + id, Toast.LENGTH_LONG).show();
-
 	}
 	
 	private void setupTabs() {

@@ -24,23 +24,13 @@ public class Event extends ParseObject {
 	}
 	
 	public static Event fromParseObject(ParseObject obj) {
-		Event event = new Event();
-		// Extract values from obj to populate the member variables
-		event.eventName = obj.getString("eventName");
-		event.summary = obj.getString("summary");
-		event.description = obj.getString("description");
-		event.location = obj.getString("location");
-		event.imageUrl = obj.getString("imageUrl");
-		event.startTime = obj.getString("startTime");
-		event.endTime = obj.getString("endTime");
-		Log.d("debug", event.eventName + " ObjId= " + event.getObjectId());
-		return event;
+		return (Event)obj;
 	}
 	
 	public static ArrayList<Event> fromParseObjectsList(List<ParseObject> list) {
 		ArrayList<Event> events = new ArrayList<Event>(list.size());
 		for (int i=0; i<list.size(); i++) {
-			events.add(Event.fromParseObject(list.get(i)));
+			events.add(fromParseObject(list.get(i)));
 		}
 		
 		return events;
@@ -48,35 +38,35 @@ public class Event extends ParseObject {
 
 	@Override
 	public String toString() {
-		return getObjectId() + ": " + eventName;
+		return getObjectId() + ": " + getEventName();
 	}
 
 	// Getter methods
 	public String getEventName() {
-		return eventName;
+		return this.getString("eventName");
 	}
 
 	public String getSummary() {
-		return summary;
+		return this.getString("summary");
 	}
 
 	public String getDescription() {
-		return description;
+		return this.getString("description");
 	}
 
 	public String getLocation() {
-		return location;
+		return this.getString("location");
 	}
 
 	public String getImageUrl() {
-		return imageUrl;
+		return this.getString("imageUrl");
 	}
 
 	public String getStartTime() {
-		return startTime;
+		return this.getString("startTime");
 	}
 
 	public String getEndTime() {
-		return endTime;
+		return this.getString("endTime");
 	}
 }
