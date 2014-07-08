@@ -27,6 +27,7 @@ public class NasaXApplication extends Application {
 
 		// Add your initialization code here
 	    ParseObject.registerSubclass(Event.class);
+	    Parse.enableLocalDatastore(this);
 		Parse.initialize(this, "ZnS9KINPID8w6NcMT25IIcYRB6xVD0ELOZsDYcH1",
 				"0m2t7SvIxJijmnm312SxI7pTGcp6s0wr973CltoG");
 

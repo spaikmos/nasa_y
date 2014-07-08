@@ -3,27 +3,19 @@ package com.nasax.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
-
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 
 @ParseClassName("event")
 public class Event extends ParseObject {
-	// I don't recall all the member variables in event.  We'll have to make sure this matches the model.
-	private String eventName;
-	private String summary;			// Short description of event
-	private String description;		// Long description
-	private String location;		// Address
-	private String imageUrl;
-	private String startTime;
-	private String endTime;
 
 	public Event() {
 	}
 	
 	public static Event fromParseObject(ParseObject obj) {
+		Event event = (Event) obj;
+		event.pinInBackground(null);
 		return (Event)obj;
 	}
 	
