@@ -1,6 +1,7 @@
 package com.nasax.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.parse.ParseClassName;
@@ -54,11 +55,11 @@ public class Event extends ParseObject {
 		return this.getString("imageUrl");
 	}
 
-	public String getStartTime() {
-		return this.getString("startTime");
+	public Date getStartTime() {
+		return this.getDate("startTime");
 	}
 
-	public String getEndTime() {
-		return this.getString("endTime");
+	public Date getEndTime() {
+		return this.getDate("endTime");
 	}
 }

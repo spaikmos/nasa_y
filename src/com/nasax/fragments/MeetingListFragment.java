@@ -64,6 +64,9 @@ public class MeetingListFragment extends Fragment {
 		});
 		lvEvents.setAdapter(aEvents);
 
+		// TODO:  This is a hack to prevent events from showing up again.  Need to fix this
+		//	by fixing populateList() to not populate duplicate events?
+		aEvents.clear();
 		populateList();
 		
 		return v;
@@ -73,6 +76,7 @@ public class MeetingListFragment extends Fragment {
 		// TODO:  Need to pull data based on the event startTime field.
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
 		query.whereExists("objectId");
+		query.orderByAscending("startTime");
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> eventList, ParseException e) {
 		        if (e == null) {

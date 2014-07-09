@@ -2,6 +2,7 @@ package com.nasax.adapters;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -68,14 +69,14 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 		return v;
 	}
 		
-	public String getRelativeTime(String startTime) {
+	public String getRelativeTime(Date startTime) {
 		String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 		SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
 		sf.setLenient(true);
 	 
 		String relativeDate = "";
 		try {
-			long dateMillis = sf.parse(startTime).getTime();
+			long dateMillis = sf.parse(startTime.toString()).getTime();
 			relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
 					System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
 		} catch (ParseException e) {
