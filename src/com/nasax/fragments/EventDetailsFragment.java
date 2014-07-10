@@ -1,6 +1,7 @@
 package com.nasax.fragments;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,11 +10,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.nasax.activities.EventProfileActivity;
 import com.nasax.activities.R;
 import com.nasax.models.Event;
 import com.nasax.models.EventUser;
@@ -80,7 +83,7 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		tvEventDescription.setText(event.getDescription());
 		tvEventLocation.setText(event.getLocation());
 
-		// Set the spinner
+		// Configure the spinner
 		Spinner spinner = (Spinner) v.findViewById(R.id.spAttending);
 		spinner.setOnItemSelectedListener(this);
 		int pos = eventUser.getIsGoing();
@@ -88,7 +91,7 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 			spinner.setSelection(pos);
 		}
 
-		// Set the AtEvent switch
+		// Configure the AtEvent switch
 		Switch swAtEvent = (Switch) v.findViewById(R.id.swAtEvent);
 		swAtEvent.setOnClickListener(new OnClickListener() {
 			@Override
@@ -99,6 +102,15 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		});
 		swAtEvent.setChecked(eventUser.getAtEvent());
 
+		// Configure the button
+		Button button = (Button) v.findViewById(R.id.btnModifyProfile);
+		button.setOnClickListener(new View.OnClickListener() {
+		    public void onClick(View v) {
+				Intent i = new Intent(v.getContext(), EventProfileActivity.class);
+				i.putExtra("eventUserId", (String) eventUser.getObjectId());
+				startActivity(i);
+		    }
+		});
 		return v;
 	}
 
