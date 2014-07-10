@@ -28,7 +28,7 @@ public class Event extends ParseObject {
 		
 		return events;
 	}
-
+	
 	@Override
 	public String toString() {
 		return getObjectId() + ": " + getEventName();

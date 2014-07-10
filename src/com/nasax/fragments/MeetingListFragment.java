@@ -18,6 +18,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import eu.erikw.PullToRefreshListView;
 import eu.erikw.PullToRefreshListView.OnRefreshListener;
@@ -73,14 +74,32 @@ public class MeetingListFragment extends Fragment {
 	}
 	
 	private void populateList() {
-		// TODO:  Need to pull data based on the event startTime field.
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
-		query.whereExists("objectId");
-		query.orderByAscending("startTime");
+		// Need to pull all elements from EventUser that contain the current userId
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
+		query.whereEqualTo("userId", ParseUser.getCurrentUser().getObjectId());
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> eventList, ParseException e) {
 		        if (e == null) {
-		        	aEvents.addAll(Event.fromParseObjectsList(eventList));
+		        	// Query was successful.
+		        	// Generate array of eventIds from EventUser objects
+	        		ArrayList<String> eventIds = new ArrayList<String>(eventList.size());
+	        		for (int i=0; i<eventList.size(); i++) {
+	        			eventIds.add(eventList.get(i).getString("eventId"));
+	        		}		
+	        		
+	        		// Query the event table to get all events that match the IDs
+	        		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
+	        		query.whereContainedIn("objectId", eventIds);
+	        		query.orderByAscending("startTime");
+	        		query.findInBackground(new FindCallback<ParseObject>() {
+	        		    public void done(List<ParseObject> eventList, ParseException e) {
+	        		        if (e == null) {
+	        		        	aEvents.addAll(Event.fromParseObjectsList(eventList));
+	        		        } else {
+	        		            Log.d("debug", "populateList:  Parse Query2 failed!");
+	        		        }
+	        		    }
+	        		});		
 		        } else {
 		            Log.d("debug", "populateList:  Parse Query failed!");
 		        }
