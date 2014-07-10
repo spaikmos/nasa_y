@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.nasax.activities.R;
@@ -85,6 +87,17 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		if((pos >=0 ) && (pos <= 2)) {
 			spinner.setSelection(eventUser.getIsGoing());
 		}
+		
+		// Set the attending switch
+		Switch swAttending = (Switch) v.findViewById(R.id.swAttending);
+		swAttending.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+		        boolean atEvent = ((Switch) v).isChecked();       
+		        eventUser.setAtEvent(atEvent);
+			}
+		});
+
 		return v;
 	}
 
@@ -96,6 +109,11 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+    
+    public void onSwitchClicked(View view) {
+        boolean atEvent = ((Switch) view).isChecked();       
+        eventUser.setAtEvent(atEvent);
     }
 
 }
