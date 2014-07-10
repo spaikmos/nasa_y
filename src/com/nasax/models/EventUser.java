@@ -50,8 +50,8 @@ public class EventUser extends ParseObject {
 		return this.getString("atEvent");
 	}
 	
-	public String getIsGoing() {
-		return this.getString("isGoing");
+	public int getIsGoing() {
+		return this.getInt("isGoing");
 	}
 	
 	// Setter methods
@@ -62,8 +62,8 @@ public class EventUser extends ParseObject {
 		this.saveInBackground();
 	}
 	
-	public void setIsGoing(String isGoing) {
-		if(isGoing.equals("Yes") || isGoing.equals("Maybe") || isGoing.equals("No")) {
+	public void setIsGoing(int isGoing) {
+		if((isGoing >= 0) && (isGoing <= 2)) {
 			this.put("isGoing", isGoing);
 			this.saveInBackground();
 		}

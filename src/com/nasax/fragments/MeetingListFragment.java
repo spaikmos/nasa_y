@@ -14,6 +14,7 @@ import com.nasax.activities.R;
 import com.nasax.adapters.EventArrayAdapter;
 import com.nasax.listeners.EndlessScrollListener;
 import com.nasax.models.Event;
+import com.nasax.models.EventUser;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -84,7 +85,10 @@ public class MeetingListFragment extends Fragment {
 		        	// Generate array of eventIds from EventUser objects
 	        		ArrayList<String> eventIds = new ArrayList<String>(eventList.size());
 	        		for (int i=0; i<eventList.size(); i++) {
-	        			eventIds.add(eventList.get(i).getString("eventId"));
+	        			EventUser eventUser = (EventUser)eventList.get(i);
+	        			
+	        			eventUser.pinInBackground(null);
+	        			eventIds.add(eventUser.getString("eventId"));
 	        		}		
 	        		
 	        		// Query the event table to get all events that match the IDs

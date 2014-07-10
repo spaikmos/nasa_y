@@ -6,30 +6,50 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.nasax.activities.R;
 import com.nasax.models.Event;
+import com.nasax.models.EventUser;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
-public class EventDetailsFragment extends Fragment {
+public class EventDetailsFragment extends Fragment implements OnItemSelectedListener {
 	// TODO:  This is a hack.  We need to pass in the actual eventId into the fragment
 	private String eventId;
+	private String userId;
 	private Event event;
+	private EventUser eventUser;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		eventId = getArguments().getString("eventId");
+		userId = ParseUser.getCurrentUser().getObjectId();
+		
 		// Get the event data from local datastore
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
 		query.fromLocalDatastore();
 		try {
 			event = (Event)query.get(eventId);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		// Get the EventUser data from local datastore
+		query = ParseQuery.getQuery("EventUser");
+		query.fromLocalDatastore();
+		query.whereEqualTo("eventId",  eventId);
+		query.whereEqualTo("userId", userId);
+		try {
+			eventUser = (EventUser)query.getFirst();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +78,24 @@ public class EventDetailsFragment extends Fragment {
 		tvEventDescription.setText(event.getDescription());
 		tvEventLocation.setText(event.getLocation());
 
+		// Set the spinner
+		Spinner spinner = (Spinner) v.findViewById(R.id.spAttending);
+		spinner.setOnItemSelectedListener(this);
+		int pos = eventUser.getIsGoing();
+		if((pos >=0 ) && (pos <= 2)) {
+			spinner.setSelection(eventUser.getIsGoing());
+		}
 		return v;
 	}
+
+    public void onItemSelected(AdapterView<?> parent, View view, 
+            int pos, long id) {
+        // An item was selected.
+    	eventUser.setIsGoing(pos);
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
 
 }
