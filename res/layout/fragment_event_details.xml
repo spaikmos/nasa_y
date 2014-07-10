@@ -62,7 +62,7 @@
                 android:entries="@array/spAttendingList" />
             
             <Switch
-                android:id="@+id/swAttending"
+                android:id="@+id/swAtEvent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -76,7 +76,7 @@
                 android:id="@+id/btnModifyProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/swAttending"
+                android:layout_below="@+id/swAtEvent"
                 android:layout_centerHorizontal="true"
                 android:text="Modify Profile Settings" />
 

@@ -65,16 +65,16 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_event_details, container,
 				false);
-		
+
 		// Get view references
 		ImageView ivEventImage = (ImageView) v.findViewById(R.id.ivEventMap);
 		TextView tvEventDescription = (TextView) v.findViewById(R.id.tvEventDescription);
 		TextView tvEventLocation = (TextView) v.findViewById(R.id.tvEventAddress);
-		
+
 		// Clear out image if it's recycled
 		ivEventImage.setImageResource(android.R.color.transparent);
 		ImageLoader imageLoader = ImageLoader.getInstance();
-		
+
 		// Populate views with data
 		imageLoader.displayImage(event.getImageUrl(), ivEventImage);
 		tvEventDescription.setText(event.getDescription());
@@ -85,18 +85,19 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		spinner.setOnItemSelectedListener(this);
 		int pos = eventUser.getIsGoing();
 		if((pos >=0 ) && (pos <= 2)) {
-			spinner.setSelection(eventUser.getIsGoing());
+			spinner.setSelection(pos);
 		}
-		
-		// Set the attending switch
-		Switch swAttending = (Switch) v.findViewById(R.id.swAttending);
-		swAttending.setOnClickListener(new OnClickListener() {
+
+		// Set the AtEvent switch
+		Switch swAtEvent = (Switch) v.findViewById(R.id.swAtEvent);
+		swAtEvent.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 		        boolean atEvent = ((Switch) v).isChecked();       
 		        eventUser.setAtEvent(atEvent);
 			}
 		});
+		swAtEvent.setChecked(eventUser.getAtEvent());
 
 		return v;
 	}

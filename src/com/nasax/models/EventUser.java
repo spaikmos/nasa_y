@@ -46,8 +46,8 @@ public class EventUser extends ParseObject {
 		return null;
 	}
 	
-	public String getAtEvent() {
-		return this.getString("atEvent");
+	public Boolean getAtEvent() {
+		return this.getBoolean("atEvent");
 	}
 	
 	public int getIsGoing() {
