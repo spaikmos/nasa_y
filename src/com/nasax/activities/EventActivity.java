@@ -29,8 +29,6 @@ public class EventActivity extends FragmentActivity {
 
 		Bundle args = new Bundle();
 		args.putString("eventId", eventId);
-		// TODO:  Need to get userId from Parse client
-		args.putString("userId", "SPaik");
 		
 		Tab tab1 = actionBar
 			.newTab()

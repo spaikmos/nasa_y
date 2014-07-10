@@ -44,16 +44,42 @@
                 android:layout_below="@+id/llLocation"
                 android:text="TextView" />
 
+            <TextView
+                android:id="@+id/tvGoing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+				android:layout_alignLeft="@+id/spAttending"
+                android:layout_below="@+id/tvEventDescription"
+                android:text="Going?" />
+                
+            <Spinner
+                android:id="@+id/spAttending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvEventDescription"
+                android:entries="@array/spAttendingList" />
+            
             <Switch
                 android:id="@+id/swAttending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvEventDescription"
+                android:layout_below="@+id/spAttending"
                 android:text="Arrived?"
                 android:textOff="NO"
                 android:textOn="YES" />
+
+            <Button
+                android:id="@+id/btnModifyProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/swAttending"
+                android:text="Modify Profile Settings" />
+
         </RelativeLayout>
     </ScrollView>
 
