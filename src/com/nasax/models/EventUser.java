@@ -54,9 +54,35 @@ public class EventUser extends ParseObject {
 		return this.getInt("isGoing");
 	}
 	
-	// Setter methods
-	//public void setDisplayFields();
+	public Boolean getShowName() {
+		return this.getBoolean("showName");
+	}
 	
+	public Boolean getShowEmail() {
+		return this.getBoolean("showEmail");
+	}
+	
+	public Boolean getShowAddress() {
+		return this.getBoolean("showAddress");
+	}
+	
+	public Boolean getShowSchoolName() {
+		return this.getBoolean("showSchoolName");
+	}
+	
+	public Boolean getShowCompanyName() {
+		return this.getBoolean("showCompanyName");
+	}
+	
+	public Boolean getShowOccupation() {
+		return this.getBoolean("showOccupation");
+	}
+	
+	public Boolean getShowAbout() {
+		return this.getBoolean("showAbout");
+	}
+	
+	// Setter methods	
 	public void setAtEvent(Boolean atEvent) {
 		this.put("atEvent", atEvent);
 		this.saveInBackground();
@@ -67,5 +93,10 @@ public class EventUser extends ParseObject {
 			this.put("isGoing", isGoing);
 			this.saveInBackground();
 		}
+	}
+	
+	public void setShow(String field, Boolean val) {
+		this.put(field,  val);
+		this.saveInBackground();
 	}
 }

@@ -53,10 +53,12 @@ public class NasaXApplication extends Application {
 		ParseUser me = ParseUser.getCurrentUser();
 		try {
 			me.fetch();
+			me.pin();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		Log.d("debug", "Your username is: " + me.getUsername());
 		Log.d("debug", "Your name is: " + me.getString("name"));
 	}
