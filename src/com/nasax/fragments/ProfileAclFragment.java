@@ -2,7 +2,6 @@ package com.nasax.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,14 +17,10 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class ProfileAclFragment extends Fragment {
-	private String eventUserId;
 	private String eventUserCol;
-	private String switchText;
-	private String userCol;
 	private EventUser eventUser;
 	private TextView tvItem;
 	private Switch swItem;
-	private ParseUser me;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,15 +39,9 @@ public class ProfileAclFragment extends Fragment {
 		return v;
 	}
 
-	public void setupView(String eId, String eUCol, String uCol, String swText) {
+	public void setupView(String eventUserId, String eUCol, String uCol, String swText) {
 		// Get arguments for fragment
-		eventUserId = eId;
 		eventUserCol = eUCol;
-		switchText = swText;
-		userCol = uCol;
-
-		me = ParseUser.getCurrentUser();
-		String userId = me.getObjectId();
 
 		// Get the EventUser data from local datastore
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
@@ -64,7 +53,7 @@ public class ProfileAclFragment extends Fragment {
 		}
 
 		// Setup the textview
-		tvItem.setText(me.getString(userCol));
+		tvItem.setText(ParseUser.getCurrentUser().getString(uCol));
 
 		// Setup the switch
 		swItem.setOnClickListener(new OnClickListener() {
@@ -90,6 +79,6 @@ public class ProfileAclFragment extends Fragment {
 		} else {
 			tvItem.setVisibility(View.GONE);
 		}
-		swItem.setText(switchText);
+		swItem.setText(swText);
 	}
 }
