@@ -27,7 +27,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class EventDetailsFragment extends Fragment implements OnItemSelectedListener {
-	// TODO:  This is a hack.  We need to pass in the actual eventId into the fragment
 	private String eventId;
 	private String userId;
 	private Event event;

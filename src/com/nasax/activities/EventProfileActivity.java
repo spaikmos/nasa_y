@@ -1,12 +1,12 @@
 package com.nasax.activities;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.widget.Switch;
 import android.widget.TextView;
 
+import com.nasax.fragments.ProfileAclFragment;
 import com.nasax.models.Event;
 import com.nasax.models.EventUser;
 import com.parse.ParseException;
@@ -14,24 +14,10 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-public class EventProfileActivity extends Activity {
+public class EventProfileActivity extends FragmentActivity {
 	private EventUser eventUser;
 	private ParseUser me;
 	private Event event;
-	private TextView tvName;
-	private TextView tvEmail;
-	private TextView tvAddress;
-	private TextView tvSchoolName;
-	private TextView tvCompanyName;
-	private TextView tvOccupation;
-	private TextView tvAbout;
-	private Switch swName;
-	private Switch swEmail;
-	private Switch swAddress;
-	private Switch swSchoolName;
-	private Switch swCompanyName;
-	private Switch swOccupation;
-	private Switch swAbout;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +56,11 @@ public class EventProfileActivity extends Activity {
 		// Populate textviews with user data
 		TextView tvUsername = (TextView) findViewById(R.id.tvUsername);
 		tvUsername.setText(me.getUsername());
+		
+		// Setup fragments
+		ProfileAclFragment proAclFrag = (ProfileAclFragment) getSupportFragmentManager().findFragmentById(R.id.fName);
+		//proAclFrag.setupView(eventUser.getObjectId(), "showName", "name", "Name");
+		/*
 		tvName = (TextView) findViewById(R.id.tvName);
 		tvName.setText(me.getString("name"));
 		tvEmail = (TextView) findViewById(R.id.tvEmail);
@@ -86,6 +77,8 @@ public class EventProfileActivity extends Activity {
 		tvAbout.setText(me.getString("about"));
 		// Populate the switches
 		Boolean val = eventUser.getShowAbout();
-
+*/
 	}
+	
+	
 }

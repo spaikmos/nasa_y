@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
-
+<!--  
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
-
+-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
@@ -30,145 +30,25 @@
                 android:layout_below="@+id/tvUsername"
                 android:src="@drawable/ic_launcher" />
 
-            <Switch
-                android:id="@+id/swName"
+            <fragment
+                android:id="@+id/fName"
+                android:name="android.support.v4.app.ListFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/ivProfilePic"
-                android:text="Real Name"
-                android:textOff="Hide"
-                android:textOn="Share" />
-
-            <TextView
-                android:id="@+id/tvName"
+                tools:layout="@layout/fragment_profile_acl" />
+            
+            <fragment
+                android:id="@+id/fEmail"
+                android:name="android.support.v4.app.ListFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/swName"
-                android:text="TextView" />
-
-            <Switch
-                android:id="@+id/swEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvName"
-                android:text="E-mail Address"
-                android:textOff="Hide"
-                android:textOn="Share" />
-
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/swEmail"
-                android:text="TextView" />
-
-            <Switch
-                android:id="@+id/swAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvEmail"
-                android:text="Address"
-                android:textOff="Hide"
-                android:textOn="Share" />
-
-            <TextView
-                android:id="@+id/tvAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/swAddress"
-                android:text="TextView" />
-
-            <Switch
-                android:id="@+id/swSchoolName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvAddress"
-                android:text="School Name"
-                android:textOff="Hide"
-                android:textOn="Share" />
-
-            <TextView
-                android:id="@+id/tvSchoolName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/swSchoolName"
-                android:text="TextView" />
-
-            <Switch
-                android:id="@+id/swCompanyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvSchoolName"
-                android:text="Company Name"
-                android:textOff="Hide"
-                android:textOn="Share" />
-
-            <TextView
-                android:id="@+id/tvCompanyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/swCompanyName"
-                android:text="TextView" />
-
-            <Switch
-                android:id="@+id/swOccupation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvCompanyName"
-                android:text="Occupation"
-                android:textOff="Hide"
-                android:textOn="Share" />
-
-            <TextView
-                android:id="@+id/tvOccupation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/swOccupation"
-                android:text="TextView" />
-
-            <Switch
-                android:id="@+id/swAbout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvOccupation"
-                android:text="About Me"
-                android:textOff="Hide"
-                android:textOn="Share" />
-
-            <TextView
-                android:id="@+id/tvAbout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/swAbout"
-                android:text="TextView" />
+                android:layout_below="@+id/fName"
+                tools:layout="@layout/fragment_profile_acl" />
 
             <EditText
                 android:id="@+id/etNote"
@@ -176,22 +56,22 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/tvAbout"
-                android:hint="Note to share with other attendees..."
-                android:ems="10" >
+                android:layout_below="@+id/fEmail"
+                android:ems="10"
+                android:hint="Note to share with other attendees..." >
 
                 <requestFocus />
             </EditText>
-            
+
             <Button
                 android:id="@+id/btnSaveNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etNote"
                 android:layout_alignParentRight="true"
+                android:layout_below="@+id/etNote"
                 android:text="Save Note" />
-            
         </RelativeLayout>
-    </ScrollView>
-
+<!--   
+        </ScrollView>
+-->
 </RelativeLayout>
