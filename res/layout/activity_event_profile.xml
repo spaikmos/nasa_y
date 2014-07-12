@@ -40,13 +40,73 @@
                 android:layout_below="@+id/ivProfilePic"
                 tools:layout="@layout/fragment_profile_acl" />
 
+            <fragment
+                android:id="@+id/fEmail"
+                android:name="com.nasax.fragments.ProfileAclFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fName"
+                tools:layout="@layout/fragment_profile_acl" />
+
+            <fragment
+                android:id="@+id/fAddress"
+                android:name="com.nasax.fragments.ProfileAclFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fEmail"
+                tools:layout="@layout/fragment_profile_acl" />
+
+            <fragment
+                android:id="@+id/fSchoolName"
+                android:name="com.nasax.fragments.ProfileAclFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fAddress"
+                tools:layout="@layout/fragment_profile_acl" />
+
+            <fragment
+                android:id="@+id/fCompanyName"
+                android:name="com.nasax.fragments.ProfileAclFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fSchoolName"
+                tools:layout="@layout/fragment_profile_acl" />
+
+            <fragment
+                android:id="@+id/fOccupation"
+                android:name="com.nasax.fragments.ProfileAclFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fCompanyName"
+                tools:layout="@layout/fragment_profile_acl" />
+
+            <fragment
+                android:id="@+id/fAbout"
+                android:name="com.nasax.fragments.ProfileAclFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fOccupation"
+                tools:layout="@layout/fragment_profile_acl" />
+
             <EditText
                 android:id="@+id/etNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/fName"
+                android:layout_below="@+id/fAbout"
                 android:ems="10"
                 android:hint="Note to share with other attendees..." >
 
@@ -59,7 +119,17 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/etNote"
+                android:onClick="onSaveButtonClick"
                 android:text="Save Note" />
+
+            <Button
+                android:id="@+id/btnClear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/etNote"
+                android:onClick="onClearButtonClick"
+                android:text="Clear Note" />
         </RelativeLayout>
     </ScrollView>
 
