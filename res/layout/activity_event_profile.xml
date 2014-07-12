@@ -3,75 +3,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
-<!--  
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageView
+            android:id="@+id/ivProfilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvUsername"
+            android:src="@drawable/ic_launcher" />
+    <!--
+        
+        <FrameLayout
+            android:id="@+id/flItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivProfilePic"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" >
 -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/tvUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <ImageView
-                android:id="@+id/ivProfilePic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/tvUsername"
-                android:src="@drawable/ic_launcher" />
-
             <fragment
                 android:id="@+id/fName"
-                android:name="android.support.v4.app.ListFragment"
+                android:name="com.nasax.fragments.ProfileAclFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/ivProfilePic"
+             android:layout_below="@+id/ivProfilePic"
                 tools:layout="@layout/fragment_profile_acl" />
-            
-            <fragment
-                android:id="@+id/fEmail"
-                android:name="android.support.v4.app.ListFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fName"
-                tools:layout="@layout/fragment_profile_acl" />
+<!--         </FrameLayout>
+    -->
 
-            <EditText
-                android:id="@+id/etNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fEmail"
-                android:ems="10"
-                android:hint="Note to share with other attendees..." >
+        <EditText
+            android:id="@+id/etNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fName"
+            android:ems="10"
+            android:hint="Note to share with other attendees..." >
 
-                <requestFocus />
-            </EditText>
+            <requestFocus />
+        </EditText>
 
-            <Button
-                android:id="@+id/btnSaveNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/etNote"
-                android:text="Save Note" />
-        </RelativeLayout>
-<!--   
-        </ScrollView>
--->
+        <Button
+            android:id="@+id/btnSaveNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/etNote"
+            android:text="Save Note" />
+    </RelativeLayout>
+     </ScrollView>
+
 </RelativeLayout>

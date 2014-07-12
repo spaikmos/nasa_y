@@ -58,8 +58,8 @@ public class EventProfileActivity extends FragmentActivity {
 		tvUsername.setText(me.getUsername());
 		
 		// Setup fragments
-		ProfileAclFragment proAclFrag = (ProfileAclFragment) getSupportFragmentManager().findFragmentById(R.id.fName);
-		//proAclFrag.setupView(eventUser.getObjectId(), "showName", "name", "Name");
+		setupFragment(R.id.fName, "showName", "name", "Name");
+		
 		/*
 		tvName = (TextView) findViewById(R.id.tvName);
 		tvName.setText(me.getString("name"));
@@ -80,5 +80,8 @@ public class EventProfileActivity extends FragmentActivity {
 */
 	}
 	
-	
+	void setupFragment(Integer rId, String eUCol, String uCol, String swText) {
+		ProfileAclFragment proAclFrag = (ProfileAclFragment) getSupportFragmentManager().findFragmentById(rId);
+		proAclFrag.setupView(eventUser.getObjectId(), eUCol, uCol, swText);
+	}
 }

@@ -2,6 +2,7 @@ package com.nasax.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,8 +18,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class ProfileAclFragment extends Fragment {
-	private String eventId;
+	private String eventUserId;
 	private String eventUserCol;
+	private String switchText;
 	private String userCol;
 	private EventUser eventUser;
 	private TextView tvItem;
@@ -33,32 +35,30 @@ public class ProfileAclFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_event_details, container,
+		View v = inflater.inflate(R.layout.fragment_profile_acl, container,
 				false);
 
 		// Get the Views
 		tvItem = (TextView) v.findViewById(R.id.tvProfileItem);
 		swItem = (Switch) v.findViewById(R.id.swProfileItem);
-
 		return v;
 	}
 
 	public void setupView(String eId, String eUCol, String uCol, String swText) {
+		// Get arguments for fragment
+		eventUserId = eId;
+		eventUserCol = eUCol;
+		switchText = swText;
+		userCol = uCol;
+
 		me = ParseUser.getCurrentUser();
 		String userId = me.getObjectId();
-
-		// Get arguments for fragment
-		eventId = eId;
-		eventUserCol = eUCol;
-		userCol = uCol;
 
 		// Get the EventUser data from local datastore
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
 		query.fromLocalDatastore();
-		query.whereEqualTo("eventId", eventId);
-		query.whereEqualTo("userId", userId);
 		try {
-			eventUser = (EventUser) query.getFirst();
+			eventUser = (EventUser) query.get(eventUserId);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -90,6 +90,6 @@ public class ProfileAclFragment extends Fragment {
 		} else {
 			tvItem.setVisibility(View.GONE);
 		}
-		swItem.setText(swText);
+		swItem.setText(switchText);
 	}
 }
