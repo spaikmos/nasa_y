@@ -14,5 +14,6 @@
     <string name="title_activity_event_profile">EventProfileActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_signup">New User Signup</string>
 
 </resources>

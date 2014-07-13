@@ -44,7 +44,8 @@ public class LoginActivity extends Activity {
 
 	}
 
-	public void onClickSignUp(View v) {
+	public void onClickSignup(View v) {
+		Intent i = new Intent(context, SignupActivity.class);
+		startActivity(i);
 	}
-
 }
