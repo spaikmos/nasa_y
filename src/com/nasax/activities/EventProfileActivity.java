@@ -43,6 +43,7 @@ public class EventProfileActivity extends FragmentActivity {
 		
 		// Setup fragments
 		setupFragment(R.id.fName, "showName", "name", "Name");
+		setupFragment(R.id.fPhone, "showPhone", "phone", "Phone Number");
 		setupFragment(R.id.fEmail, "showEmail", "email", "E-mail");
 		setupFragment(R.id.fAddress, "showAddress", "address", "Address");
 		setupFragment(R.id.fSchoolName, "showSchoolName", "schoolName", "School Name");

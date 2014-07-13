@@ -41,13 +41,23 @@
                 tools:layout="@layout/fragment_profile_acl" />
 
             <fragment
-                android:id="@+id/fEmail"
+                android:id="@+id/fPhone"
                 android:name="com.nasax.fragments.ProfileAclFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/fName"
+                tools:layout="@layout/fragment_profile_acl" />
+
+            <fragment
+                android:id="@+id/fEmail"
+                android:name="com.nasax.fragments.ProfileAclFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/fPhone"
                 tools:layout="@layout/fragment_profile_acl" />
 
             <fragment
