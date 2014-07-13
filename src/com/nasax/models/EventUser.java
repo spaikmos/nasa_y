@@ -58,6 +58,9 @@ public class EventUser extends ParseObject {
 		return this.getBoolean("showName");
 	}
 	
+	public Boolean getShowPhone() {
+		return this.getBoolean("showPhone");
+	}
 	public Boolean getShowEmail() {
 		return this.getBoolean("showEmail");
 	}

@@ -1,146 +1,141 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Username"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <TextView
-                android:id="@+id/tvUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+        <ImageView
+            android:id="@+id/ivProfilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvUsername"
+            android:src="@drawable/ic_launcher" />
 
-            <ImageView
-                android:id="@+id/ivProfilePic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/tvUsername"
-                android:src="@drawable/ic_launcher" />
+        <fragment
+            android:id="@+id/fName"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ivProfilePic"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fName"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/ivProfilePic"
-                tools:layout="@layout/fragment_profile_acl" />
+        <fragment
+            android:id="@+id/fPhone"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fName"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fPhone"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fName"
-                tools:layout="@layout/fragment_profile_acl" />
+        <fragment
+            android:id="@+id/fEmail"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fPhone"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fEmail"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fPhone"
-                tools:layout="@layout/fragment_profile_acl" />
+        <fragment
+            android:id="@+id/fAddress"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fEmail"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fAddress"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fEmail"
-                tools:layout="@layout/fragment_profile_acl" />
+        <fragment
+            android:id="@+id/fSchoolName"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fAddress"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fSchoolName"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fAddress"
-                tools:layout="@layout/fragment_profile_acl" />
+        <fragment
+            android:id="@+id/fCompanyName"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fSchoolName"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fCompanyName"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fSchoolName"
-                tools:layout="@layout/fragment_profile_acl" />
+        <fragment
+            android:id="@+id/fOccupation"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fCompanyName"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fOccupation"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fCompanyName"
-                tools:layout="@layout/fragment_profile_acl" />
+        <fragment
+            android:id="@+id/fAbout"
+            android:name="com.nasax.fragments.ProfileAclFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fOccupation"
+            tools:layout="@layout/fragment_profile_acl" />
 
-            <fragment
-                android:id="@+id/fAbout"
-                android:name="com.nasax.fragments.ProfileAclFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fOccupation"
-                tools:layout="@layout/fragment_profile_acl" />
+        <EditText
+            android:id="@+id/etNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fAbout"
+            android:ems="10"
+            android:hint="Note to share with other attendees..." >
 
-            <EditText
-                android:id="@+id/etNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/fAbout"
-                android:ems="10"
-                android:hint="Note to share with other attendees..." >
+            <requestFocus />
+        </EditText>
 
-                <requestFocus />
-            </EditText>
+        <Button
+            android:id="@+id/btnSaveNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/etNote"
+            android:onClick="onSaveButtonClick"
+            android:text="Save Note" />
 
-            <Button
-                android:id="@+id/btnSaveNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/etNote"
-                android:onClick="onSaveButtonClick"
-                android:text="Save Note" />
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/etNote"
+            android:onClick="onClearButtonClick"
+            android:text="Clear Note" />
+    </RelativeLayout>
 
-            <Button
-                android:id="@+id/btnClear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/etNote"
-                android:onClick="onClearButtonClick"
-                android:text="Clear Note" />
-        </RelativeLayout>
-    </ScrollView>
-
-</RelativeLayout>
+</ScrollView>

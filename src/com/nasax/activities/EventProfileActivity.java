@@ -41,6 +41,8 @@ public class EventProfileActivity extends FragmentActivity {
 		TextView tvUsername = (TextView) findViewById(R.id.tvUsername);
 		tvUsername.setText(ParseUser.getCurrentUser().getUsername());
 		
+		// TODO:  Populate the imageview with profile pic
+		
 		// Setup fragments
 		setupFragment(R.id.fName, "showName", "name", "Name");
 		setupFragment(R.id.fPhone, "showPhone", "phone", "Phone Number");
