@@ -20,6 +20,13 @@ public class LoginActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		if(ParseUser.getCurrentUser() != null) {
+			// User is already logged in.  Skip the login screen
+			Intent i = new Intent(this, MainActivity.class);
+			startActivity(i);
+		}
+
 		setContentView(R.layout.activity_login);
 
 		// Setup views
