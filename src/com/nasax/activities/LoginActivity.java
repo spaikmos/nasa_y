@@ -1,15 +1,21 @@
 package com.nasax.activities;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class LoginActivity extends Activity {
@@ -21,8 +27,9 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		if(ParseUser.getCurrentUser() != null) {
-			// User is already logged in.  Skip the login screen
+		// Comment this out if you want to see the login page again
+		if (ParseUser.getCurrentUser() != null) {
+			// User is already logged in. Skip the login screen
 			Intent i = new Intent(this, MainActivity.class);
 			startActivity(i);
 		}
@@ -40,11 +47,13 @@ public class LoginActivity extends Activity {
 				.getText().toString(), new LogInCallback() {
 			public void done(ParseUser user, ParseException e) {
 				if (user != null) {
-					// Hooray! The user is logged in.  Go to the main activity page.
+					// Hooray! The user is logged in. Go to the main activity
+					// page.
 					Intent i = new Intent(context, MainActivity.class);
 					startActivity(i);
 				} else {
-					Toast.makeText(context, "Invalid credentials.  Try again!", Toast.LENGTH_LONG).show();
+					Toast.makeText(context, "Invalid credentials.  Try again!",
+							Toast.LENGTH_LONG).show();
 				}
 			}
 		});

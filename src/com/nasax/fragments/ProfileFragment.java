@@ -2,6 +2,7 @@ package com.nasax.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.nasax.activities.R;
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class ProfileFragment extends Fragment {
@@ -43,8 +46,25 @@ public class ProfileFragment extends Fragment {
 		etAbout = (EditText) v.findViewById(R.id.etAbout);
 		user = ParseUser.getCurrentUser();
 		
-		// Populate the views
-		onResetButtonClick(v.findViewById(R.id.btnReset));
+		// Refresh the user object via the network
+		user.fetchInBackground(new GetCallback<ParseUser>() {
+			public void done(ParseUser object, ParseException e) {
+				if (e == null) {
+					// Success!
+					user = object;
+					Log.d("debug", "callback username = " + object.getString("name"));
+					user.pinInBackground(null);
+					// Populate the views
+					onResetButtonClick(null);
+				} else {
+					// Failure!
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		// Set the view with data if a current version exists
+		onResetButtonClick(null);
 		
 		// Configure the buttons
 		Button button = (Button) v.findViewById(R.id.btnReset);
@@ -77,14 +97,14 @@ public class ProfileFragment extends Fragment {
     }
 
     public void onResetButtonClick(View v) {
-    	etName.setText(user.getString("name").toString());
-    	etAddress.setText(user.getString("address").toString());
-    	etPhone.setText(user.getString("phone").toString());
-    	etEmail.setText(user.getString("email").toString());
-    	etSchoolName.setText(user.getString("schoolName").toString());
-    	etCompanyName.setText(user.getString("companyName").toString());
-    	etOccupation.setText(user.getString("occupation").toString());
-    	etAbout.setText(user.getString("about").toString());
+    	etName.setText(user.getString("name"));
+    	etAddress.setText(user.getString("address"));
+    	etPhone.setText(user.getString("phone"));
+    	etEmail.setText(user.getString("email"));
+    	etSchoolName.setText(user.getString("schoolName"));
+    	etCompanyName.setText(user.getString("companyName"));
+    	etOccupation.setText(user.getString("occupation"));
+    	etAbout.setText(user.getString("about"));
     }
 
 }

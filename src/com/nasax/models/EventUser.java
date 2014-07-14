@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("EventUser")
 public class EventUser extends ParseObject {
@@ -29,16 +30,16 @@ public class EventUser extends ParseObject {
 
 	@Override
 	public String toString() {
-		return getObjectId() + ": " + getEventId();
+		return getObjectId() + ": " + getEvent();
 	}
 
 	// Getter methods
-	public String getEventId() {
-		return this.getString("eventId");
+	public ParseObject getEvent() {
+		return this.getParseObject("event");
 	}
 	
-	public String getUserId() {
-		return this.getString("userId");
+	public ParseUser getUser() {
+		return this.getParseUser("user");
 	}
 	
 	public String getDisplayFields() {

@@ -77,33 +77,23 @@ public class MeetingListFragment extends Fragment {
 	private void populateList() {
 		// Need to pull all elements from EventUser that contain the current userId
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
-		query.whereEqualTo("userId", ParseUser.getCurrentUser().getObjectId());
+		query.whereEqualTo("user", ParseUser.getCurrentUser());
+		query.include("event");
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> eventList, ParseException e) {
 		        if (e == null) {
 		        	// Query was successful.
 		        	// Generate array of eventIds from EventUser objects
-	        		ArrayList<String> eventIds = new ArrayList<String>(eventList.size());
+	        		ArrayList<ParseObject> events = new ArrayList<ParseObject>(eventList.size());
 	        		for (int i=0; i<eventList.size(); i++) {
 	        			EventUser eventUser = (EventUser)eventList.get(i);
 	        			
 	        			eventUser.pinInBackground(null);
-	        			eventIds.add(eventUser.getString("eventId"));
+	        			events.add(eventUser.getEvent());
 	        		}		
 	        		
-	        		// Query the event table to get all events that match the IDs
-	        		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
-	        		query.whereContainedIn("objectId", eventIds);
-	        		query.orderByAscending("startTime");
-	        		query.findInBackground(new FindCallback<ParseObject>() {
-	        		    public void done(List<ParseObject> eventList, ParseException e) {
-	        		        if (e == null) {
-	        		        	aEvents.addAll(Event.fromParseObjectsList(eventList));
-	        		        } else {
-	        		            Log.d("debug", "populateList:  Parse Query2 failed!");
-	        		        }
-	        		    }
-	        		});		
+	        		// TODO:  Need to sort the events array by starttime.
+	        		aEvents.addAll(Event.fromParseObjectsList(events));
 		        } else {
 		            Log.d("debug", "populateList:  Parse Query failed!");
 		        }

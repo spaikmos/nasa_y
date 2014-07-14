@@ -15,5 +15,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_signup">New User Signup</string>
+    <string name="title_activity_attendee_detail">AttendeeDetail</string>
 
 </resources>

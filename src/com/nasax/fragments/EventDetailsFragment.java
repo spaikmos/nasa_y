@@ -28,7 +28,6 @@ import com.parse.ParseUser;
 
 public class EventDetailsFragment extends Fragment implements OnItemSelectedListener {
 	private String eventId;
-	private String userId;
 	private Event event;
 	private EventUser eventUser;
 
@@ -36,7 +35,6 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		eventId = getArguments().getString("eventId");
-		userId = ParseUser.getCurrentUser().getObjectId();
 		
 		// Get the event data from local datastore
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
@@ -50,8 +48,8 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		// Get the EventUser data from local datastore
 		query = ParseQuery.getQuery("EventUser");
 		query.fromLocalDatastore();
-		query.whereEqualTo("eventId",  eventId);
-		query.whereEqualTo("userId", userId);
+		query.whereEqualTo("event",  event);
+		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		try {
 			eventUser = (EventUser)query.getFirst();
 		} catch (ParseException e) {

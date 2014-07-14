@@ -40,6 +40,10 @@
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup" >
         </activity>
+        <activity
+            android:name=".AttendeeDetail"
+            android:label="@string/title_activity_attendee_detail" >
+        </activity>
     </application>
 
 </manifest>
