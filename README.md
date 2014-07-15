@@ -35,6 +35,5 @@ Milestone 3 Goals:
   * Add more fields to user profiles (hobbies, sports, music, movies, books, interests, etc)
   
   
-NOTE:  The walkthrough shows a bug where the profile 
 Walkthrough of this app:
 ![Video Walkthrough](Nasa_Y_demo.gif)
