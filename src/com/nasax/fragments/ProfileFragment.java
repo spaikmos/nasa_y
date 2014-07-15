@@ -8,8 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nasax.activities.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -23,7 +26,9 @@ public class ProfileFragment extends Fragment {
 	EditText etCompanyName;
 	EditText etOccupation;
 	EditText etAbout;
+	ImageView ivProfilePic;
 	ParseUser user;
+	TextView tvUsername;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class ProfileFragment extends Fragment {
 		etCompanyName = (EditText) v.findViewById(R.id.etCompanyName);
 		etOccupation = (EditText) v.findViewById(R.id.etOccupation);
 		etAbout = (EditText) v.findViewById(R.id.etAbout);
+		ivProfilePic = (ImageView) v.findViewById(R.id.ivProfilePic);
+		tvUsername = (TextView) v.findViewById(R.id.tvUsername);
 		user = ParseUser.getCurrentUser();
 		
 		// Refresh the user object via the network
@@ -105,6 +112,13 @@ public class ProfileFragment extends Fragment {
     	etCompanyName.setText(user.getString("companyName"));
     	etOccupation.setText(user.getString("occupation"));
     	etAbout.setText(user.getString("about"));
+    	tvUsername.setText(user.getUsername());
+    	
+    	// Load the image
+		ivProfilePic.setImageResource(android.R.color.transparent);
+		ImageLoader imageLoader = ImageLoader.getInstance();
+		// Populate views with data
+		imageLoader.displayImage(user.getString("imgUrl"), ivProfilePic);
     }
 
 }

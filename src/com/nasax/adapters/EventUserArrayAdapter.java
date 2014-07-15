@@ -16,8 +16,6 @@ import com.nasax.activities.AttendeeDetail;
 import com.nasax.activities.R;
 import com.nasax.models.EventUser;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
@@ -50,8 +48,7 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		ivProfileImage.setImageResource(android.R.color.transparent);;
 		ImageLoader imageLoader = ImageLoader.getInstance();
 		// Populate views with data
-
-		//imageLoader.displayImage(eventUser.getImageUrl(), ivProfileImage);
+		imageLoader.displayImage(attendee.getString("imgUrl"), ivProfileImage);
 		tvUsername.setText(attendee.getUsername());
 		//tvstatus.setText(eventUser.());
 		

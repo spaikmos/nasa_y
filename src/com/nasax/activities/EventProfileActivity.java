@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nasax.fragments.ProfileAclFragment;
 import com.nasax.models.EventUser;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -41,7 +43,12 @@ public class EventProfileActivity extends FragmentActivity {
 		TextView tvUsername = (TextView) findViewById(R.id.tvUsername);
 		tvUsername.setText(ParseUser.getCurrentUser().getUsername());
 		
-		// TODO:  Populate the imageview with profile pic
+	   	// Load the image
+		ImageView ivProfilePic = (ImageView) findViewById(R.id.ivProfilePic);
+		ivProfilePic.setImageResource(android.R.color.transparent);
+		ImageLoader imageLoader = ImageLoader.getInstance();
+		// Populate views with data
+		imageLoader.displayImage(ParseUser.getCurrentUser().getString("imgUrl"), ivProfilePic);
 		
 		// Setup fragments
 		setupFragment(R.id.fName, "showName", "name", "Name");
