@@ -22,12 +22,14 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		// Comment this out if you want to see the login page again
+/*		
 		if (ParseUser.getCurrentUser() != null) {
 			// User is already logged in. Skip the login screen
 			Intent i = new Intent(this, MainActivity.class);
 			startActivity(i);
 		}
-
+*/
+		
 		setContentView(R.layout.activity_login);
 
 		// Setup views

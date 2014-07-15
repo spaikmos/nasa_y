@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -60,8 +61,20 @@ public class SignupActivity extends Activity {
 				public void done(ParseException e) {
 					if (e == null) {
 						// Hooray! Let them use the app now.
-						Intent i = new Intent(context, MainActivity.class);
-						startActivity(i);
+						ParseUser.logInInBackground(etUsername.getText().toString(), etPassword
+								.getText().toString(), new LogInCallback() {
+							public void done(ParseUser user, ParseException e) {
+								if (user != null) {
+									// Hooray! The user is logged in. Go to the main activity
+									// page.
+									Intent i = new Intent(context, MainActivity.class);
+									startActivity(i);
+								} else {
+									Toast.makeText(context, "Invalid credentials.  Try again!",
+											Toast.LENGTH_LONG).show();
+								}
+							}
+						});
 					} else {
 						// Sign up didn't succeed. Look at the ParseException
 						// to figure out what went wrong
