@@ -80,7 +80,6 @@ public class AttendeeListFragment extends Fragment {
 			e.printStackTrace();
 		}
 		
-
 		populateList();
 		
 		return v;
@@ -99,7 +98,6 @@ public class AttendeeListFragment extends Fragment {
 		        	//	I don't think I should need a for() loop to do this.
 	        		for (int i=0; i<eventUserList.size(); i++) {
 	        			EventUser eU = (EventUser)eventUserList.get(i);	
-	        			Log.d("debug", "User's name = " + eU.getUser().getString("name"));
 	        			eU.pinInBackground(null);
 	        			aEventUsers.add(eU);
 	        		}		

@@ -43,14 +43,13 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		// find the views within template
 		ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
 		TextView tvUsername = (TextView) v.findViewById(R.id.tvUsername);
-		TextView tvstatus = (TextView) v.findViewById(R.id.tvStatus);
 		// Clear out image if it's recycled
 		ivProfileImage.setImageResource(android.R.color.transparent);;
 		ImageLoader imageLoader = ImageLoader.getInstance();
 		// Populate views with data
 		imageLoader.displayImage(attendee.getString("imgUrl"), ivProfileImage);
 		tvUsername.setText(attendee.getUsername());
-		//tvstatus.setText(eventUser.());
+		drawStatus(v, eventUser.getAtEvent(), eventUser.getIsGoing());
 		
 		// Set OnClickListener for the whole line
 		v.setTag(eventUser.getObjectId());
@@ -65,5 +64,31 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		});
 
 		return v;
+	}
+	
+	private void drawStatus(View v, Boolean atEvent, int isGoing) {
+		TextView tvStatus = (TextView) v.findViewById(R.id.tvStatus);
+		String status;
+
+		if(atEvent == true) {
+			status = "I'm already here!";
+		} else {
+			switch(isGoing) {
+			case 0:
+				status = "I will attend";
+				break;
+			case 1:
+				status = "I might attend";
+				break;
+			case 2:
+				status = "I won't make it.  Sorry.";
+				break;
+			default:
+				status = "ERROR:  I have no idea wtf I'm doing!!!";
+				break;
+			}
+		}
+		
+		tvStatus.setText(status);
 	}
 }

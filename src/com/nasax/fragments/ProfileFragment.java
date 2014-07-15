@@ -41,14 +41,14 @@ public class ProfileFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_profile, container, false);
 		
 		// Get views
-		etName = (EditText) v.findViewById(R.id.etName);
-		etAddress = (EditText) v.findViewById(R.id.etAddress);
-		etPhone = (EditText) v.findViewById(R.id.etPhone);
-		etEmail = (EditText) v.findViewById(R.id.etEmail);
-		etSchoolName = (EditText) v.findViewById(R.id.etSchoolName);
-		etCompanyName = (EditText) v.findViewById(R.id.etCompanyName);
-		etOccupation = (EditText) v.findViewById(R.id.etOccupation);
-		etAbout = (EditText) v.findViewById(R.id.etAbout);
+		etName = (EditText) v.findViewById(R.id.tvName);
+		etAddress = (EditText) v.findViewById(R.id.tvAddress);
+		etPhone = (EditText) v.findViewById(R.id.tvPhone);
+		etEmail = (EditText) v.findViewById(R.id.tvEmail);
+		etSchoolName = (EditText) v.findViewById(R.id.tvSchoolName);
+		etCompanyName = (EditText) v.findViewById(R.id.tvCompanyName);
+		etOccupation = (EditText) v.findViewById(R.id.tvOccupation);
+		etAbout = (EditText) v.findViewById(R.id.tvAbout);
 		ivProfilePic = (ImageView) v.findViewById(R.id.ivProfilePic);
 		tvUsername = (TextView) v.findViewById(R.id.tvUsername);
 		user = ParseUser.getCurrentUser();
