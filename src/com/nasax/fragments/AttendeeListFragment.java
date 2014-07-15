@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.nasax.activities.R;
 import com.nasax.adapters.EventUserArrayAdapter;
 import com.nasax.listeners.EndlessScrollListener;
+import com.nasax.models.Event;
 import com.nasax.models.EventUser;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -27,6 +28,7 @@ public class AttendeeListFragment extends Fragment {
 	private EventUserArrayAdapter aEventUsers;
 	private PullToRefreshListView lvAttendees;
 	private String eventId;
+	private Event event;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,16 @@ public class AttendeeListFragment extends Fragment {
 		// TODO:  This is a hack to prevent items from showing up again.  Need to fix this
 		//	by fixing populateList() to not populate duplicate items?
 		aEventUsers.clear();
+		
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
+		query.fromLocalDatastore();
+		try {
+			event = (Event)query.get(eventId);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+
 		populateList();
 		
 		return v;
@@ -77,7 +89,8 @@ public class AttendeeListFragment extends Fragment {
 	private void populateList() {
 		// Need to pull all elements from EventUser that contain the current userId
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
-		query.whereEqualTo("eventId", eventId);
+		query.whereEqualTo("event", event);
+		query.include("user");
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> eventUserList, ParseException e) {
 		        if (e == null) {
@@ -86,6 +99,7 @@ public class AttendeeListFragment extends Fragment {
 		        	//	I don't think I should need a for() loop to do this.
 	        		for (int i=0; i<eventUserList.size(); i++) {
 	        			EventUser eU = (EventUser)eventUserList.get(i);	
+	        			Log.d("debug", "User's name = " + eU.getUser().getString("name"));
 	        			eU.pinInBackground(null);
 	        			aEventUsers.add(eU);
 	        		}		

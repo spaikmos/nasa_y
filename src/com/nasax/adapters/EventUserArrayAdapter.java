@@ -32,20 +32,8 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// Get the data item for position
 		EventUser eventUser = getItem(position);
-		ParseUser attendee = null;
+		ParseUser attendee = eventUser.getUser();
 		
-		// Get the attendee data
-		// Get the eventUser data from local datastore
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
-		query.fromLocalDatastore();
-/*		
-		try {
-			attendee = (ParseUser)query.get(eventUser.getUserId());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-*/		
-
 		// Find or inflate the template
 		View v;
 		if (convertView == null) {
