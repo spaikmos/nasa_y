@@ -5,7 +5,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/tvUsername"
@@ -19,30 +20,20 @@
 
         <ImageView
             android:id="@+id/ivProfilePic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            style="@style/ProfilePic"
             android:layout_below="@+id/tvUsername"
             android:src="@drawable/ic_launcher" />
 
         <TextView
             android:id="@+id/tv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/ivProfilePic"
-            android:text="Name"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Name" />
 
         <EditText
             android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv1"
-            android:ems="10"
             android:hint="Name" >
 
             <requestFocus />
@@ -50,158 +41,100 @@
 
         <TextView
             android:id="@+id/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvName"
-            android:text="Address"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Address" />
 
         <EditText
             android:id="@+id/tvAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv2"
-            android:ems="10"
             android:hint="Address" />
 
         <TextView
             android:id="@+id/tv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvAddress"
-            android:text="Phone"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Phone" />
 
         <EditText
             android:id="@+id/tvPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv3"
-            android:ems="10"
             android:hint="Phone"
             android:inputType="phone" />
 
         <TextView
             android:id="@+id/tv4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvPhone"
-            android:text="E-mail"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="E-mail" />
 
         <EditText
             android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv4"
-            android:ems="10"
             android:hint="E-mail"
             android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/tv5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvEmail"
-            android:text="School Name"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="School Name" />
 
         <EditText
             android:id="@+id/tvSchoolName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv5"
-            android:ems="10"
             android:hint="School Name" />
 
         <TextView
             android:id="@+id/tv6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvSchoolName"
-            android:text="Company Name"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Company Name" />
 
         <EditText
             android:id="@+id/tvCompanyName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv6"
-            android:ems="10"
             android:hint="Company Name" />
 
         <TextView
             android:id="@+id/tv7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvCompanyName"
-            android:text="Occupation"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Occupation" />
 
         <EditText
             android:id="@+id/tvOccupation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv7"
-            android:ems="10"
             android:hint="Occupation" />
 
         <TextView
             android:id="@+id/tv8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvOccupation"
-            android:text="About Me"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="About Me" />
 
         <EditText
             android:id="@+id/tvAbout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/tv8"
-            android:ems="10"
             android:hint="About..." />
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tvAbout"
             android:text="Save" />
 
         <Button
             android:id="@+id/btnReset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/tvAbout"
             android:text="Reset" />

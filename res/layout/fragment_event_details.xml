@@ -21,9 +21,9 @@
 
                 <ImageView
                     android:id="@+id/ivEventMap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher" />
 
                 <TextView
@@ -31,7 +31,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
                     android:text="TextView" />
             </LinearLayout>
 
@@ -48,11 +47,11 @@
                 android:id="@+id/tvGoing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/spAttending"
                 android:layout_alignParentLeft="true"
-				android:layout_alignLeft="@+id/spAttending"
                 android:layout_below="@+id/tvEventDescription"
                 android:text="Going?" />
-                
+
             <Spinner
                 android:id="@+id/spAttending"
                 android:layout_width="wrap_content"
@@ -60,7 +59,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/tvEventDescription"
                 android:entries="@array/spAttendingList" />
-            
+
             <Switch
                 android:id="@+id/swAtEvent"
                 android:layout_width="wrap_content"
@@ -79,7 +78,6 @@
                 android:layout_below="@+id/swAtEvent"
                 android:layout_centerHorizontal="true"
                 android:text="Modify Profile Settings" />
-
         </RelativeLayout>
     </ScrollView>
 

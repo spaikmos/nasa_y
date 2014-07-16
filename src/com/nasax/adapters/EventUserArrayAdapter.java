@@ -18,12 +18,9 @@ import com.nasax.models.EventUser;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.parse.ParseUser;
 
-public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
-	private Context appContext;
-	
+public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {	
 	public EventUserArrayAdapter(Context context, List<EventUser> eventUsers) {
 		super(context, 0, eventUsers);
-		appContext = context;
 	}
 
 	@Override
@@ -59,7 +56,7 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 				// TODO:  Make the attendee detail a modal overlay instead of a separate activity
 				Intent i = new Intent(getContext(), AttendeeDetail.class);
 				i.putExtra("eventUserId", (String) v.getTag());
-				appContext.startActivity(i);
+				v.getContext().startActivity(i);
 			}			
 		});
 

@@ -23,11 +23,9 @@ import com.nasax.models.Event;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class EventArrayAdapter extends ArrayAdapter<Event> {
-	private Context appContext;
 	
 	public EventArrayAdapter(Context context, List<Event> events) {
 		super(context, 0, events);
-		appContext = context;
 	}
 
 	@Override
@@ -63,7 +61,7 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 			public void onClick(View v) {
 				Intent i = new Intent(getContext(), EventActivity.class);
 				i.putExtra("eventId", (String) v.getTag());
-				appContext.startActivity(i);
+				v.getContext().startActivity(i);
 			}			
 		});
 		return v;
