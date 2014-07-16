@@ -59,8 +59,7 @@
 
         <Button
             android:id="@+id/btnSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:layout_alignLeft="@+id/etPassword"
             android:layout_below="@+id/etPassword"
             android:background="#ffc0c0c0"
@@ -69,8 +68,7 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:layout_alignRight="@+id/etPassword"
             android:layout_below="@+id/etPassword"
             android:background="#ff00c0FF"

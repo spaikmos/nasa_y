@@ -5,10 +5,7 @@
 
     <ImageView
         android:id="@+id/ivEventImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        style="@style/ListPic"
         android:src="@drawable/ic_launcher" />
 
     <TextView

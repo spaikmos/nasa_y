@@ -5,10 +5,7 @@
 
     <Switch
         android:id="@+id/swProfileItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        style="@style/TvHeader.Switch"
         android:layout_alignParentTop="true"
         android:text="Profile Item"
         android:textOff="Hide"
@@ -16,10 +13,7 @@
 
     <TextView
         android:id="@+id/tvProfileItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+		style="@style/TvProfileItem"
         android:layout_below="@+id/swProfileItem"
         android:text="Profile Text" />
 

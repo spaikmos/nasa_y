@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
+	style="@style/MainLayout" >
+	
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Username"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_height="wrap_content" >
 
         <ImageView
             android:id="@+id/ivProfilePic"
             style="@style/ProfilePic"
-            android:layout_below="@+id/tvUsername"
             android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            style="@style/TvTitle"
+            android:layout_alignTop="@+id/ivProfilePic"
+            android:layout_toRightOf="@+id/ivProfilePic"
+            android:text="Username" />
 
         <TextView
             android:id="@+id/tv1"

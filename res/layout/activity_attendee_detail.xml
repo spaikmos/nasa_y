@@ -1,193 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+	style="@style/MainLayout"
     tools:context="${relativePackage}.${activityClass}" >
     
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/tvAttendeeUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Username"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
         <ImageView
             android:id="@+id/ivProfilePic"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/tvAttendeeUsername"
+            style="@style/ProfilePic"
             android:src="@drawable/ic_launcher" />
 
         <TextView
+            android:id="@+id/tvAttendeeUsername"
+            style="@style/TvTitle"
+            android:layout_alignTop="@+id/ivProfilePic"
+            android:layout_toRightOf="@+id/ivProfilePic"
+            android:text="Username" />
+
+       <TextView
             android:id="@+id/tv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/ivProfilePic"
-            android:text="Name:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Name:" />
 
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv1" />
 
         <TextView
             android:id="@+id/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvName"
-            android:text="Address:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Address:" />
 
         <TextView
             android:id="@+id/tvAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv2" />
 
         <TextView
             android:id="@+id/tv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvAddress"
-            android:text="Phone:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Phone:" />
 
         <TextView
             android:id="@+id/tvPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv3" />
 
         <TextView
             android:id="@+id/tv4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvPhone"
-            android:text="E-mail:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="E-mail:" />
 
         <TextView
             android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv4" />
 
         <TextView
             android:id="@+id/tv5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvEmail"
-            android:text="School Name:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
+            android:text="School Name:" />
+ 
         <TextView
             android:id="@+id/tvSchoolName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv5" />
 
         <TextView
             android:id="@+id/tv6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvSchoolName"
-            android:text="Company Name:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Company Name:" />
 
         <TextView
             android:id="@+id/tvCompanyName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv6" />
 
         <TextView
             android:id="@+id/tv7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvCompanyName"
-            android:text="Occupation:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Occupation:" />
 
         <TextView
             android:id="@+id/tvOccupation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/tv7" />
+            style="@style/TvProfileItem"
+           android:layout_below="@+id/tv7" />
 
         <TextView
             android:id="@+id/tv8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvOccupation"
-            android:text="About Me:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="About Me:" />
 
         <TextView
             android:id="@+id/tvAbout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv8" />
         
         <TextView
             android:id="@+id/tv9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvHeader"
             android:layout_below="@+id/tvAbout"
-            android:text="Meeting Note:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Meeting Note:" />
         
         <TextView
             android:id="@+id/tvNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/TvProfileItem"
             android:layout_below="@+id/tv9" />
         
 

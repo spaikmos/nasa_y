@@ -1,119 +1,76 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+	style="@style/MainLayout"
     tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Username"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
         <ImageView
             android:id="@+id/ivProfilePic"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/tvUsername"
+            style="@style/ProfilePic"
             android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            style="@style/TvTitle"
+            android:layout_alignTop="@+id/ivProfilePic"
+            android:layout_toRightOf="@+id/ivProfilePic"
+            android:text="Username" />
 
         <fragment
             android:id="@+id/fName"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/ivProfilePic"
             tools:layout="@layout/fragment_profile_acl" />
 
         <fragment
             android:id="@+id/fPhone"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/fName"
             tools:layout="@layout/fragment_profile_acl" />
 
         <fragment
             android:id="@+id/fEmail"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/fPhone"
             tools:layout="@layout/fragment_profile_acl" />
 
         <fragment
             android:id="@+id/fAddress"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/fEmail"
             tools:layout="@layout/fragment_profile_acl" />
 
         <fragment
             android:id="@+id/fSchoolName"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/fAddress"
             tools:layout="@layout/fragment_profile_acl" />
 
         <fragment
             android:id="@+id/fCompanyName"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/fSchoolName"
             tools:layout="@layout/fragment_profile_acl" />
 
         <fragment
             android:id="@+id/fOccupation"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/fCompanyName"
             tools:layout="@layout/fragment_profile_acl" />
 
         <fragment
             android:id="@+id/fAbout"
-            android:name="com.nasax.fragments.ProfileAclFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/FProfileAcl"
             android:layout_below="@+id/fOccupation"
             tools:layout="@layout/fragment_profile_acl" />
 
         <EditText
             android:id="@+id/etNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
+            style="@style/EtField"
             android:layout_below="@+id/fAbout"
-            android:ems="10"
             android:hint="Note to share with other attendees..." >
 
             <requestFocus />
@@ -121,8 +78,7 @@
 
         <Button
             android:id="@+id/btnSaveNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/etNote"
             android:onClick="onSaveButtonClick"
@@ -130,8 +86,7 @@
 
         <Button
             android:id="@+id/btnClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/etNote"
             android:onClick="onClearButtonClick"

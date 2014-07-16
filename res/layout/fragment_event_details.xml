@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+	style="@style/MainLayout" >
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -62,10 +61,7 @@
 
             <Switch
                 android:id="@+id/swAtEvent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
+                style="@style/Switch"
                 android:layout_below="@+id/spAttending"
                 android:text="Arrived?"
                 android:textOff="NO"
@@ -73,8 +69,7 @@
 
             <Button
                 android:id="@+id/btnModifyProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Button"
                 android:layout_below="@+id/swAtEvent"
                 android:layout_centerHorizontal="true"
                 android:text="Modify Profile Settings" />
