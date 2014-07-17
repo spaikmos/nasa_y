@@ -6,15 +6,14 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
-public class MainActivity extends FragmentActivity {
-	/** Called when the activity is first created. */
-	public void onCreate(Bundle savedInstanceState) {
+public class EditProfile extends FragmentActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		ParseAnalytics.trackAppOpened(getIntent());
+		setContentView(R.layout.activity_edit_profile);
 	}
 
 	@Override
@@ -29,13 +28,12 @@ public class MainActivity extends FragmentActivity {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.miProfile:
-			Intent i = new Intent(this, EditProfile.class);
-			startActivity(i);
+			// Do nothing in the profile view
 			return true;
 		case R.id.miLogout:
 			ParseUser.logOut();
-			Intent i2 = new Intent(this, LoginActivity.class);
-			startActivity(i2);
+			Intent i = new Intent(this, LoginActivity.class);
+			startActivity(i);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

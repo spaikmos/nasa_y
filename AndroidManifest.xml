@@ -14,30 +14,28 @@
     <application
         android:name=".NasaXApplication"
         android:icon="@drawable/ic_launcher_cat_poo"
-        android:theme="@android:style/Theme.Holo.Light"
-        android:label="@string/app_name" >
-        <activity
-            android:name=".LoginActivity" >
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light" >
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EventActivity" >
+        <activity android:name=".EventActivity" >
+        </activity>
+        <activity android:name=".EventProfileActivity" >
+        </activity>
+        <activity android:name=".MainActivity" >
+        </activity>
+        <activity android:name=".SignupActivity" >
+        </activity>
+        <activity android:name=".AttendeeDetail" >
         </activity>
         <activity
-            android:name=".EventProfileActivity" >
-        </activity>
-        <activity
-            android:name=".MainActivity" >
-        </activity>
-        <activity
-            android:name=".SignupActivity" >
-        </activity>
-        <activity
-            android:name=".AttendeeDetail" >
+            android:name=".EditProfile"
+            android:label="@string/title_activity_edit_profile" >
         </activity>
     </application>
 
