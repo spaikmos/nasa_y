@@ -100,16 +100,6 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 			}
 		});
 		swAtEvent.setChecked(eventUser.getAtEvent());
-
-		// Configure the button
-		Button button = (Button) v.findViewById(R.id.btnModifyProfile);
-		button.setOnClickListener(new View.OnClickListener() {
-		    public void onClick(View v) {
-				Intent i = new Intent(v.getContext(), EventProfileActivity.class);
-				i.putExtra("eventUserId", (String) eventUser.getObjectId());
-				startActivity(i);
-		    }
-		});
 		return v;
 	}
 

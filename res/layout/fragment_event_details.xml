@@ -66,13 +66,6 @@
                 android:text="Arrived?"
                 android:textOff="NO"
                 android:textOn="YES" />
-
-            <Button
-                android:id="@+id/btnModifyProfile"
-                style="@style/Button"
-                android:layout_below="@+id/swAtEvent"
-                android:layout_centerHorizontal="true"
-                android:text="Modify Profile Settings" />
         </RelativeLayout>
     </ScrollView>
 
