@@ -8,7 +8,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 @ParseClassName("EventUser")
-public class EventUser extends ParseObject {
+public class EventUser extends ParseObject implements Comparable<EventUser> {
 
 	public EventUser() {
 	}
@@ -32,6 +32,11 @@ public class EventUser extends ParseObject {
 	public String toString() {
 		return getObjectId() + ": " + getEvent();
 	}
+	
+	public int compareTo(EventUser eu) {
+		int cmp = (getUser().getUsername()).compareTo(eu.getUser().getUsername());
+        return cmp;
+    }
 
 	// Getter methods
 	public ParseObject getEvent() {

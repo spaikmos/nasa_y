@@ -1,6 +1,7 @@
 package com.nasax.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import com.parse.ParseObject;
 
 
 @ParseClassName("event")
-public class Event extends ParseObject {
+public class Event extends ParseObject implements Comparable<Event> {
 
 	public Event() {
 	}
@@ -26,6 +27,7 @@ public class Event extends ParseObject {
 			events.add(fromParseObject(list.get(i)));
 		}
 		
+		Collections.sort(events);
 		return events;
 	}
 	
@@ -34,6 +36,11 @@ public class Event extends ParseObject {
 		return getObjectId() + ": " + getEventName();
 	}
 
+	public int compareTo(Event e) {
+		int cmp = getStartTime().compareTo(e.getStartTime());
+        return (cmp != 0 ? cmp : getEventName().compareTo(e.getEventName()));
+    }
+	
 	// Getter methods
 	public String getEventName() {
 		return this.getString("eventName");

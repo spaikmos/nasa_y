@@ -2,6 +2,7 @@ package com.nasax.fragments;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -58,6 +59,7 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 	
 		ActionBar actionBar = getActivity().getActionBar();
 		actionBar.setTitle(event.getEventName());
+		//actionBar.setIcon(((Drawable)event.getParseFile("imageFile")));
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.nasax.fragments;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.os.Bundle;
@@ -96,11 +97,15 @@ public class AttendeeListFragment extends Fragment {
 		        	// Query was successful.
 		        	// TODO:  Is there a more efficient way to add the eventUsers list to aEventsUsers?
 		        	//	I don't think I should need a for() loop to do this.
+	        		ArrayList<EventUser> eUList = new ArrayList<EventUser>(eventUserList.size());
+
 	        		for (int i=0; i<eventUserList.size(); i++) {
 	        			EventUser eU = (EventUser)eventUserList.get(i);	
 	        			eU.pinInBackground(null);
-	        			aEventUsers.add(eU);
-	        		}		
+	        			eUList.add(eU);
+	        		}	
+	        		Collections.sort(eUList);
+        			aEventUsers.addAll(eUList);
 		        } else {
 		            Log.d("debug", "populateList:  Parse Query failed!");
 		        }
