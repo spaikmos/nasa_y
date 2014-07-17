@@ -1,17 +1,18 @@
 package com.nasax.activities;
 
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nasax.fragments.AttendeeListFragment;
 import com.nasax.fragments.EventDetailsFragment;
 import com.nasax.fragments.MeetingPicsFragment;
-import com.nasax.listeners.FragmentTabListener;
 import com.nasax.models.Event;
 import com.nasax.models.EventUser;
 import com.parse.ParseException;
@@ -20,8 +21,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class EventActivity extends FragmentActivity {
-	private String eventId;
-	private String eventUserId;
+	private static String eventId;
+	private static String eventUserId;
+	FragmentPagerAdapter adapterViewPager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,9 @@ public class EventActivity extends FragmentActivity {
 		}
 
 		setContentView(R.layout.activity_event);
-		setupTabs();
+		ViewPager vpPager = (ViewPager) findViewById(R.id.vpPager);
+		adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
+		vpPager.setAdapter(adapterViewPager);
 		// TODO:  Set the title bar of this activity to use the eventImage and eventName fields
 	}
 	
@@ -82,44 +86,48 @@ public class EventActivity extends FragmentActivity {
 		}
 	}
 
-	
-	private void setupTabs() {
-		ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setDisplayShowTitleEnabled(true);
-
-		Bundle args = new Bundle();
-		args.putString("eventId", eventId);
+    public static class MyPagerAdapter extends FragmentPagerAdapter {
+	private static int NUM_ITEMS = 3;
 		
-		Tab tab1 = actionBar
-			.newTab()
-			.setText("Details")
-			//.setIcon(R.drawable.ic_launcher)
-			.setTag("EventDetailsFragment")
-			.setTabListener(
-				new FragmentTabListener<EventDetailsFragment>(R.id.flEventsContainer, this, "details", args, EventDetailsFragment.class));
-		
-		actionBar.addTab(tab1);
-		actionBar.selectTab(tab1);
-
-		Tab tab2 = actionBar
-			.newTab()
-			.setText("Attendees")
-			//.setIcon(R.drawable.ic_launcher)
-			.setTag("AttendeeListFragment")
-			.setTabListener(
-			    new FragmentTabListener<AttendeeListFragment>(R.id.flEventsContainer, this, "attendees", args, AttendeeListFragment.class));
-		
-		actionBar.addTab(tab2);
-		
-		Tab tab3 = actionBar
-			.newTab()
-			.setText("Pics")
-			//.setIcon(R.drawable.ic_launcher)
-			.setTag("MeetingPicsFragment")
-			.setTabListener(
-			    new FragmentTabListener<MeetingPicsFragment>(R.id.flEventsContainer, this, "pics", args, MeetingPicsFragment.class));
-			
-			actionBar.addTab(tab3);
-	}
+        public MyPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+        
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+ 
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+            case 0: // Fragment # 0 - This will show FirstFragment
+                return EventDetailsFragment.newInstance(eventUserId);
+            case 1: // Fragment # 0 - This will show FirstFragment different title
+                return AttendeeListFragment.newInstance(eventId);
+            case 2: // Fragment # 1 - This will show SecondFragment
+                return MeetingPicsFragment.newInstance(eventUserId);
+            default:
+            	return null;
+            }
+        }
+        
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+        	switch(position) {
+        		case 0:
+        			return "Event Details";
+        		case 1:
+        			return "Attendee List";
+        		case 2:
+        			return "Pictures";
+        	}
+        	
+        	return null;
+        }
+        
+    }
 }

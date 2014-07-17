@@ -112,4 +112,12 @@ public class AttendeeListFragment extends Fragment {
 		    }
 		});		
 	}
+	
+	public static AttendeeListFragment newInstance(String eventId) {
+		AttendeeListFragment f = new AttendeeListFragment();
+		Bundle args = new Bundle();
+		args.putString("eventId", eventId);
+		f.setArguments(args);
+		return f;
+	}
 }

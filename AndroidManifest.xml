@@ -33,9 +33,7 @@
         </activity>
         <activity android:name=".AttendeeDetail" >
         </activity>
-        <activity
-            android:name=".EditProfile"
-            android:label="@string/title_activity_edit_profile" >
+        <activity android:name=".EditProfile" >
         </activity>
     </application>
 

@@ -22,4 +22,12 @@ public class MeetingPicsFragment extends Fragment {
 		return v;
 	}
 
+	public static MeetingPicsFragment newInstance(String eventUserId) {
+		MeetingPicsFragment f = new MeetingPicsFragment();
+		Bundle args = new Bundle();
+		args.putString("eventUserId", eventUserId);
+		f.setArguments(args);
+		return f;
+	}
+
 }
