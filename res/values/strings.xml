@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Let us meet</string>
-    <string name="app_name">NasaX</string>
+    <string name="app_name">Kittles</string>
     <string name="title_activity_event">EventActivity</string>
 
     <string-array name="spAttendingList">

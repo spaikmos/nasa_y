@@ -13,12 +13,11 @@
 
     <application
         android:name=".NasaXApplication"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher_cat_poo"
         android:theme="@android:style/Theme.Holo.Light"
         android:label="@string/app_name" >
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,24 +25,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EventActivity"
-            android:label="@string/title_activity_event" >
+            android:name=".EventActivity" >
         </activity>
         <activity
-            android:name=".EventProfileActivity"
-            android:label="@string/title_activity_event_profile" >
+            android:name=".EventProfileActivity" >
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:name=".MainActivity" >
         </activity>
         <activity
-            android:name=".SignupActivity"
-            android:label="@string/title_activity_signup" >
+            android:name=".SignupActivity" >
         </activity>
         <activity
-            android:name=".AttendeeDetail"
-            android:label="@string/title_activity_attendee_detail" >
+            android:name=".AttendeeDetail" >
         </activity>
     </application>
 

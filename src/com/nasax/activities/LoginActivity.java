@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class LoginActivity extends Activity {
 
 		// Comment this out if you want to see the login page again		
 		if (ParseUser.getCurrentUser() != null) {
+			//Log.d("debug", "Current user = " + String.valueOf(ParseUser.getCurrentUser()));
 			// User is already logged in. Skip the login screen
 			Intent i = new Intent(this, MainActivity.class);
 			startActivity(i);
