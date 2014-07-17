@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/spAttending"
                 android:layout_alignParentLeft="true"
+                android:layout_alignBottom="@+id/spAttending"
                 android:layout_below="@+id/tvEventDescription"
                 android:text="Going?" />
 
