@@ -5,15 +5,15 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
-    <FrameLayout
-        android:id="@+id/flContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+    <fragment
+        android:id="@+id/fEventList"
+        android:name="com.nasax.fragments.MeetingListFragment"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-
-    </FrameLayout>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_meetings" />
 
 </RelativeLayout>
