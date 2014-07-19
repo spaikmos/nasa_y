@@ -14,13 +14,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nasax.activities.EventActivity;
 import com.nasax.activities.R;
 import com.nasax.models.Event;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.parse.GetDataCallback;
+import com.parse.ParseImageView;
 
 public class EventArrayAdapter extends ArrayAdapter<Event> {
 	
@@ -41,15 +41,27 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
 			v = convertView;
 		}
 		// find the views within template
-		ImageView ivEventImage = (ImageView) v.findViewById(R.id.ivEventImage);
+		ParseImageView ivEventImage = (ParseImageView) v.findViewById(R.id.ivEventImage);
 		TextView tvEventTitle = (TextView) v.findViewById(R.id.tvEventTitle);
 		TextView tvEventLocation = (TextView) v.findViewById(R.id.tvEventLocation);
 		TextView tvRelativeTimestamp = (TextView) v.findViewById(R.id.tvRelativeTimestamp);
 		// Clear out image if it's recycled
 		ivEventImage.setImageResource(android.R.color.transparent);;
-		ImageLoader imageLoader = ImageLoader.getInstance();
 		// Populate views with data
-		imageLoader.displayImage(event.getImageUrl(), ivEventImage);
+		// Load the image
+		// The placeholder will be used before and during the fetch, to be
+		// replaced by the fetched image data.
+		// imageView.setPlaceholder(getResources().getDrawable(R.ic_launcher));
+		ivEventImage.setParseFile(event.getImageFile());
+		ivEventImage.loadInBackground(new GetDataCallback() {
+			@Override
+			public void done(byte[] data, com.parse.ParseException e) {
+				if (e != null) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		tvEventTitle.setText(event.getEventName());
 		tvEventLocation.setText(event.getLocation());
 		// TODO:  Set the timestamp based on EventStart - currentTime

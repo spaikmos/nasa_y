@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <ImageView
+        <com.parse.ParseImageView
             android:id="@+id/ivProfilePic"
             style="@style/ProfilePic"
             android:src="@drawable/ic_launcher" />

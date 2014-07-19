@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nasax.fragments.ProfileAclFragment;
 import com.nasax.models.EventUser;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -44,11 +44,22 @@ public class EventProfileActivity extends FragmentActivity {
 		tvUsername.setText(ParseUser.getCurrentUser().getUsername());
 		
 	   	// Load the image
-		ImageView ivProfilePic = (ImageView) findViewById(R.id.ivProfilePic);
+		ParseImageView ivProfilePic = (ParseImageView) findViewById(R.id.ivProfilePic);
 		ivProfilePic.setImageResource(android.R.color.transparent);
-		ImageLoader imageLoader = ImageLoader.getInstance();
 		// Populate views with data
-		imageLoader.displayImage(ParseUser.getCurrentUser().getString("imgUrl"), ivProfilePic);
+		// Load the image
+		// The placeholder will be used before and during the fetch, to be
+		// replaced by the fetched image data.
+		// imageView.setPlaceholder(getResources().getDrawable(R.ic_launcher));
+		ivProfilePic.setParseFile(ParseUser.getCurrentUser().getParseFile("picture"));
+		ivProfilePic.loadInBackground(new GetDataCallback() {
+			@Override
+			public void done(byte[] data, ParseException e) {
+				if (e != null) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 		// Setup fragments
 		setupFragment(R.id.fName, "showName", "name", "Name");

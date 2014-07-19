@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 
@@ -58,8 +59,8 @@ public class Event extends ParseObject implements Comparable<Event> {
 		return this.getString("location");
 	}
 
-	public String getImageUrl() {
-		return this.getString("imageUrl");
+	public ParseFile getImageFile() {
+		return this.getParseFile("imageFile");
 	}
 
 	public Date getStartTime() {

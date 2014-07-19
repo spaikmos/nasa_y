@@ -3,12 +3,12 @@ package com.nasax.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nasax.models.EventUser;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -33,14 +33,24 @@ public class AttendeeDetail extends Activity {
 		}
 		
 		ParseUser attendee = eventUser.getParseUser("user");
-		ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfilePic);
+		ParseImageView ivProfileImage = (ParseImageView) findViewById(R.id.ivProfilePic);
 		TextView tvUsername = (TextView) findViewById(R.id.tvAttendeeUsername);
 
 		// Clear out image if it's recycled
 		ivProfileImage.setImageResource(android.R.color.transparent);;
-		ImageLoader imageLoader = ImageLoader.getInstance();
-		// Populate views with data
-		imageLoader.displayImage(attendee.getString("imgUrl"), ivProfileImage);
+		// Load the image
+		// The placeholder will be used before and during the fetch, to be
+		// replaced by the fetched image data.
+		// imageView.setPlaceholder(getResources().getDrawable(R.ic_launcher));
+		ivProfileImage.setParseFile(attendee.getParseFile("picture"));
+		ivProfileImage.loadInBackground(new GetDataCallback() {
+			@Override
+			public void done(byte[] data, ParseException e) {
+				if (e != null) {
+					e.printStackTrace();
+				}
+			}
+		});
 		tvUsername.setText(attendee.getUsername());
 		
 		// Go through each of the ACLs to decide whether to display the item or not

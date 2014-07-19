@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -17,8 +16,9 @@ import android.widget.TextView;
 import com.nasax.activities.R;
 import com.nasax.models.Event;
 import com.nasax.models.EventUser;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -52,17 +52,28 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 				false);
 
 		// Get view references
-		ImageView ivEventImage = (ImageView) v.findViewById(R.id.ivEventMap);
+		ParseImageView ivEventImage = (ParseImageView) v.findViewById(R.id.ivEventMap);
 		TextView tvEventDescription = (TextView) v.findViewById(R.id.tvEventDescription);
 		TextView tvEventLocation = (TextView) v.findViewById(R.id.tvEventAddress);
 		Event event = (Event)eventUser.getEvent();
 
 		// Clear out image if it's recycled
 		ivEventImage.setImageResource(android.R.color.transparent);
-		ImageLoader imageLoader = ImageLoader.getInstance();
 
 		// Populate views with data
-		imageLoader.displayImage(event.getImageUrl(), ivEventImage);
+		// Load the image
+		// The placeholder will be used before and during the fetch, to be
+		// replaced by the fetched image data.
+		// imageView.setPlaceholder(getResources().getDrawable(R.ic_launcher));
+		ivEventImage.setParseFile(event.getImageFile());
+		ivEventImage.loadInBackground(new GetDataCallback() {
+			@Override
+			public void done(byte[] data, ParseException e) {
+				if (e != null) {
+					e.printStackTrace();
+				}
+			}
+		});
 		tvEventDescription.setText(event.getDescription());
 		tvEventLocation.setText(event.getLocation());
 

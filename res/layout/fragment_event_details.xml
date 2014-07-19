@@ -18,7 +18,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true" >
 
-                <ImageView
+                <com.parse.ParseImageView
                     android:id="@+id/ivEventMap"
                     android:layout_width="150dp"
                     android:layout_height="150dp"

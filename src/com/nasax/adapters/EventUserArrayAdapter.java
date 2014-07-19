@@ -9,13 +9,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nasax.activities.AttendeeDetail;
 import com.nasax.activities.R;
 import com.nasax.models.EventUser;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseImageView;
 import com.parse.ParseUser;
 
 public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {	
@@ -38,13 +39,24 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 			v = convertView;
 		}
 		// find the views within template
-		ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
+		ParseImageView ivProfileImage = (ParseImageView) v.findViewById(R.id.ivProfileImage);
 		TextView tvUsername = (TextView) v.findViewById(R.id.tvUsername);
 		// Clear out image if it's recycled
 		ivProfileImage.setImageResource(android.R.color.transparent);;
-		ImageLoader imageLoader = ImageLoader.getInstance();
 		// Populate views with data
-		imageLoader.displayImage(attendee.getString("imgUrl"), ivProfileImage);
+		// Load the image
+		// The placeholder will be used before and during the fetch, to be
+		// replaced by the fetched image data.
+		// imageView.setPlaceholder(getResources().getDrawable(R.ic_launcher));
+		ivProfileImage.setParseFile(attendee.getParseFile("picture"));
+		ivProfileImage.loadInBackground(new GetDataCallback() {
+			@Override
+			public void done(byte[] data, ParseException e) {
+				if (e != null) {
+					e.printStackTrace();
+				}
+			}
+		});
 		tvUsername.setText(attendee.getUsername());
 		drawStatus(v, eventUser.getAtEvent(), eventUser.getIsGoing());
 		
