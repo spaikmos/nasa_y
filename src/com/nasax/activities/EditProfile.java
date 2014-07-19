@@ -39,11 +39,4 @@ public class EditProfile extends FragmentActivity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-/*
-	@Override
-	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
-		super.onActivityResult(arg0, arg1, arg2);
-	}
-*/
-	
 }
