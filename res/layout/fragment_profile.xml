@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	style="@style/MainLayout" >
-	
+    style="@style/MainLayout" >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <ImageView
+        <com.parse.ParseImageView
             android:id="@+id/ivProfilePic"
             style="@style/ProfilePic"
             android:src="@drawable/ic_launcher" />
+        
+        <Button
+            android:id="@+id/btnCamera"
+            style="@style/Button"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ivProfilePic"
+            android:text="Camera" />
+
+        <Button
+            android:id="@+id/btnGallery"
+            style="@style/Button"
+            android:layout_below="@+id/ivProfilePic"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/btnCamera"
+            android:text="Gallery" />
 
         <TextView
             android:id="@+id/tvUsername"
@@ -21,7 +36,7 @@
         <TextView
             android:id="@+id/tv1"
             style="@style/TvHeader"
-            android:layout_below="@+id/ivProfilePic"
+            android:layout_below="@+id/btnCamera"
             android:text="Name" />
 
         <EditText
