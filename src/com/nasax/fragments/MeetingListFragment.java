@@ -60,21 +60,21 @@ public class MeetingListFragment extends Fragment {
 		lvEvents.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
-				//fetchTimelineAsync();
-				//lvTweets.onRefreshComplete();
+				populateList();
+				lvEvents.onRefreshComplete();
 			}
 		});
 		lvEvents.setAdapter(aEvents);
 
-		// TODO:  This is a hack to prevent events from showing up again.  Need to fix this
-		//	by fixing populateList() to not populate duplicate events?
-		aEvents.clear();
 		populateList();
 		
 		return v;
 	}
 	
 	private void populateList() {
+		// TODO:  This is a hack to prevent events from showing up again.  Need to fix this
+		//	by fixing populateList() to not populate duplicate events?
+		aEvents.clear();
 		// Need to pull all elements from EventUser that contain the current userId
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
 		query.whereEqualTo("user", ParseUser.getCurrentUser());

@@ -46,18 +46,22 @@ public class MainActivity extends FragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
+		case R.id.miEventList:
+			Intent i = new Intent(this, MainActivity.class);
+			startActivity(i);
+			return true;
 		case R.id.miAddEvent:
 			ZXScanHelper.setCustomScanLayout(R.layout.qr_scanner);
 			ZXScanHelper.scan(this, ZXSCAN_CODE);
 			return true;
 		case R.id.miProfile:
-			Intent i = new Intent(this, EditProfile.class);
-			startActivity(i);
+			Intent i2 = new Intent(this, EditProfile.class);
+			startActivity(i2);
 			return true;
 		case R.id.miLogout:
 			ParseUser.logOut();
-			Intent i2 = new Intent(this, LoginActivity.class);
-			startActivity(i2);
+			Intent i3 = new Intent(this, LoginActivity.class);
+			startActivity(i3);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

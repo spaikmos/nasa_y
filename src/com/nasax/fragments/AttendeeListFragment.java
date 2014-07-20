@@ -63,15 +63,11 @@ public class AttendeeListFragment extends Fragment {
 		lvAttendees.setOnRefreshListener(new OnRefreshListener() {
 			@Override
 			public void onRefresh() {
-				//fetchTimelineAsync();
-				//lvTweets.onRefreshComplete();
+				populateList();
+				lvAttendees.onRefreshComplete();
 			}
 		});
 		lvAttendees.setAdapter(aEventUsers);
-
-		// TODO:  This is a hack to prevent items from showing up again.  Need to fix this
-		//	by fixing populateList() to not populate duplicate items?
-		aEventUsers.clear();
 		
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("event");
 		query.fromLocalDatastore();
@@ -87,6 +83,9 @@ public class AttendeeListFragment extends Fragment {
 	}
 	
 	private void populateList() {
+		// TODO:  This is a hack to prevent items from showing up again.  Need to fix this
+		//	by fixing populateList() to not populate duplicate items?
+		aEventUsers.clear();
 		// Need to pull all elements from EventUser that contain the current userId
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
 		query.whereEqualTo("event", event);
