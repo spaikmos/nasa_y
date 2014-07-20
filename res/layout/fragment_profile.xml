@@ -43,10 +43,7 @@
             android:id="@+id/tvName"
             style="@style/EtField"
             android:layout_below="@+id/tv1"
-            android:hint="Name" >
-
-            <requestFocus />
-        </EditText>
+            android:hint="Name" />
 
         <TextView
             android:id="@+id/tv2"

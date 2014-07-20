@@ -7,10 +7,7 @@
         android:id="@+id/etNewUsername"
         style="@style/EtField"
         android:layout_alignParentTop="true"
-        android:hint="Choose username" >
-
-        <requestFocus />
-    </EditText>
+        android:hint="Choose username" />
 
     <EditText
         android:id="@+id/etNewPassword"

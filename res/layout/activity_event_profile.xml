@@ -71,10 +71,7 @@
             android:id="@+id/etNote"
             style="@style/EtField"
             android:layout_below="@+id/fAbout"
-            android:hint="Note to share with other attendees..." >
-
-            <requestFocus />
-        </EditText>
+            android:hint="Note to share with other attendees..." />
 
         <Button
             android:id="@+id/btnSaveNote"

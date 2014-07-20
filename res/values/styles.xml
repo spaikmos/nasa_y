@@ -5,7 +5,7 @@
         <item name="android:background">@drawable/buttonshape</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textColor">#2080FF</item>
+        <item name="android:textColor">@color/text</item>
     </style>
 
     <style name="EtField">
@@ -68,7 +68,7 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textColor">#2080FF</item>
+        <item name="android:textColor">@color/text</item>
         </style>
 
     <style name="TvTitle">
