@@ -13,6 +13,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+
 public class SignupActivity extends Activity {
 	EditText etUsername;
 	EditText etPassword;

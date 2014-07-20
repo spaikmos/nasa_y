@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.parse.ParseUser;
 
+
 public class EditProfile extends FragmentActivity {
 
 	@Override

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
+	
+    <item
+        android:id="@+id/miAddEvent"
+        android:icon="@drawable/ic_launcher_event"
+        android:onClick="onOptionsItemSelected"
+        android:showAsAction="ifRoom"
+        android:title="AddEvent">
+    </item>
     <item
         android:id="@+id/miProfile"
         android:icon="@drawable/ic_action_profile"

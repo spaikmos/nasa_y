@@ -1,8 +1,9 @@
 package com.nasax.listeners;
 
-
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+
+
 
 
 public abstract class EndlessScrollListener implements OnScrollListener {

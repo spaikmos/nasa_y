@@ -7,6 +7,7 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+
 @ParseClassName("EventUser")
 public class EventUser extends ParseObject implements Comparable<EventUser> {
 
