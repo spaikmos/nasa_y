@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/miEventList"
         android:icon="@drawable/ic_launcher_event"
         android:onClick="onOptionsItemSelected"
         android:showAsAction="ifRoom"
-        android:title="EventList">
+        android:title="Event List">
     </item>
     <item
         android:id="@+id/miAddEvent"
         android:icon="@drawable/ic_launcher_qrcode"
         android:onClick="onOptionsItemSelected"
         android:showAsAction="ifRoom"
-        android:title="AddEvent">
+        android:title="Scan QR Code">
     </item>
     <item
         android:id="@+id/miProfile"
@@ -21,6 +21,13 @@
         android:onClick="onOptionsItemSelected"
         android:showAsAction="ifRoom"
         android:title="Profile">
+    </item>
+    <item
+        android:id="@+id/miEventProfile"
+        android:icon="@drawable/ic_launcher_event_profile"
+        android:onClick="onOptionsItemSelected"
+        android:showAsAction="ifRoom"
+        android:title="Event Profile">
     </item>
     <item
         android:id="@+id/miLogout"

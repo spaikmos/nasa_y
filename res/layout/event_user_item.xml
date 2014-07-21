@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
+    android:layout_height="match_parent"
+    android:background="#f0f0f0" >
+
     <com.parse.ParseImageView
         android:id="@+id/ivProfileImage"
         style="@style/ListPic"
@@ -22,8 +23,24 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvUsername"
         android:layout_below="@+id/tvUsername"
-        android:autoLink="all"
-        android:linksClickable="true"
         android:text="Status" />
 
- </RelativeLayout>
+    <ImageView
+        android:id="@+id/ivSignal"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher_wifi2" />
+
+    <TextView
+        android:id="@+id/tvRssi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/ivSignal"
+        android:layout_below="@+id/ivSignal"
+        android:gravity="center_horizontal"
+        android:text="-64" />
+
+</RelativeLayout>

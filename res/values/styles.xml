@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <style name="MyActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#53777A</item>
+    </style>
+    
     <style name="Button">
         <item name="android:background">@drawable/buttonshape</item>
         <item name="android:layout_height">wrap_content</item>
@@ -30,8 +33,9 @@
     <style name="ListPic">
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_width">75dp</item>
     </style>
 
     <style name="MainLayout">
@@ -77,6 +81,7 @@
     <style name="TvTitle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     </style>
 
