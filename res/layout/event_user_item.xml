@@ -23,10 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvUsername"
         android:layout_below="@+id/tvUsername"
+        android:textColor="@color/text"
         android:text="Status" />
 
     <ImageView
-        android:id="@+id/ivSignal"
+        android:id="@+id/ivRssi"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
@@ -38,9 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignLeft="@+id/ivSignal"
-        android:layout_below="@+id/ivSignal"
+        android:layout_alignLeft="@+id/ivRssi"
+        android:layout_below="@+id/ivRssi"
         android:gravity="center_horizontal"
-        android:text="-64" />
+        android:text="RSSI" />
 
 </RelativeLayout>

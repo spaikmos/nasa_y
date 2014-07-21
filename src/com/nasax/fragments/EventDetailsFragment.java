@@ -79,7 +79,10 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 
 		// Configure the spinner
 		Spinner spinner = (Spinner) v.findViewById(R.id.spAttending);
-		spinner.setOnItemSelectedListener(this);
+		spinner.setOnItemSelectedListener(OnCatSpinnerCL);
+		
+		
+		
 		int pos = eventUser.getIsGoing();
 		if((pos >=0 ) && (pos <= 2)) {
 			spinner.setSelection(pos);
@@ -121,4 +124,14 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		return f;
 	}
 
+	 private OnItemSelectedListener OnCatSpinnerCL = new AdapterView.OnItemSelectedListener() {
+		    public void onItemSelected(AdapterView<?> parent, View view, int pos,
+		            long id) {
+		        ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.text));
+		    }
+
+		    public void onNothingSelected(AdapterView<?> parent) {
+
+		    }
+		};
 }

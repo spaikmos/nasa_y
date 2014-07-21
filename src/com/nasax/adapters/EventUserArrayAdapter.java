@@ -1,6 +1,7 @@
 package com.nasax.adapters;
 
 import java.util.List;
+import java.util.Random;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nasax.activities.AttendeeDetail;
@@ -20,8 +22,11 @@ import com.parse.ParseImageView;
 import com.parse.ParseUser;
 
 public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {	
-	public EventUserArrayAdapter(Context context, List<EventUser> eventUsers) {
-		super(context, 0, eventUsers);
+	private Context context;
+	
+	public EventUserArrayAdapter(Context ctext, List<EventUser> eventUsers) {
+		super(ctext, 0, eventUsers);
+		context = ctext;
 	}
 
 	@Override
@@ -59,6 +64,7 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		});
 		tvUsername.setText(attendee.getUsername());
 		drawStatus(v, eventUser.getAtEvent(), eventUser.getIsGoing());
+		drawRssi(v, randRssi(), eventUser.getAtEvent());
 		
 		// Set OnClickListener for the whole line
 		v.setTag(eventUser.getObjectId());
@@ -84,10 +90,10 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		} else {
 			switch(isGoing) {
 			case 0:
-				status = "I will attend";
+				status = "I'll be there!";
 				break;
 			case 1:
-				status = "I might attend";
+				status = "I might attend...";
 				break;
 			case 2:
 				status = "I won't make it.  Sorry.";
@@ -100,4 +106,44 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		
 		tvStatus.setText(status);
 	}
+	
+	private void drawRssi(View v, int rssi, Boolean atEvent) {
+		ImageView ivRssi = (ImageView) v.findViewById(R.id.ivRssi);
+		TextView tvRssi = (TextView) v.findViewById(R.id.tvRssi);
+		int color;
+		int icon;
+		
+		if(rssi < -63) {
+			color = R.color.reddark;
+			icon = R.drawable.ic_launcher_wifi0;
+		} else if(rssi < -56) {
+			color = R.color.yellowdark;
+			icon = R.drawable.ic_launcher_wifi2;
+		} else {
+			color = R.color.greendark;
+			icon = R.drawable.ic_launcher_wifi3;
+		}
+
+		if(atEvent) {
+			ivRssi.setImageDrawable(context.getResources().getDrawable(icon));
+			tvRssi.setText(String.valueOf(rssi));
+			tvRssi.setTextColor(context.getResources().getColor(color));
+		} else {
+			ivRssi.setImageResource(android.R.color.transparent);
+			tvRssi.setText(null);
+		}
+	}
+	
+	private static int randRssi() {
+	    Random rand = new Random();
+	    int max = -50;
+	    int min = -70;
+
+	    // nextInt is normally exclusive of the top value,
+	    // so add 1 to make it inclusive
+	    int randomNum = rand.nextInt((max - min) + 1) + min;
+
+	    return randomNum;
+	}
+
 }

@@ -8,8 +8,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.nasax.fragments.AttendeeListFragment;
 import com.nasax.fragments.EventDetailsFragment;
@@ -126,9 +129,22 @@ public class EventActivity extends FragmentActivity {
         		case 2:
         			return "Pictures";
         	}
-        	
+        	Log.d("debug", "getPageTitle Invalid = " + String.valueOf(position));
         	return null;
         }
         
     }
+    
+	@Override
+	   public boolean dispatchKeyEvent(KeyEvent event) {
+	       int keyCode = event.getKeyCode();
+	       switch (keyCode) {
+	       case KeyEvent.KEYCODE_VOLUME_UP:
+	       case KeyEvent.KEYCODE_VOLUME_DOWN:
+	    	   Toast.makeText(this,  "Key code = " + String.valueOf(keyCode), Toast.LENGTH_LONG).show();
+	           return true;
+	       default:
+	           return super.dispatchKeyEvent(event);
+	       }
+	   }
 }

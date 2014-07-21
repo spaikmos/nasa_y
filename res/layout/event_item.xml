@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivEventImage"
-        android:textColor="@color/text"
         android:text="Event Title" />
 
     <TextView
@@ -33,7 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:textColor="@color/text"
         android:text="Relative Timestamp" />
 
 </RelativeLayout>
