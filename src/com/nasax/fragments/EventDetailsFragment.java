@@ -29,33 +29,31 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		String eventUserId = getArguments().getString("eventUserId");
-		
+
 		// Get the event data from local datastore
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("EventUser");
 		query.include("event");
 		query.fromLocalDatastore();
 		try {
-			eventUser = (EventUser)query.get(eventUserId);
+			eventUser = (EventUser) query.get(eventUserId);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		ActionBar actionBar = getActivity().getActionBar();
-		actionBar.setTitle(((Event)eventUser.getEvent()).getEventName());
-		//actionBar.setIcon(((Drawable)event.getParseFile("imageFile")));
+		actionBar.setTitle(((Event) eventUser.getEvent()).getEventName());
+		// actionBar.setIcon(((Drawable)event.getParseFile("imageFile")));
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_event_details, container,
-				false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.fragment_event_details, container, false);
 
 		// Get view references
 		ParseImageView ivEventImage = (ParseImageView) v.findViewById(R.id.ivEventMap);
 		TextView tvEventDescription = (TextView) v.findViewById(R.id.tvEventDescription);
 		TextView tvEventLocation = (TextView) v.findViewById(R.id.tvEventAddress);
-		Event event = (Event)eventUser.getEvent();
+		Event event = (Event) eventUser.getEvent();
 
 		// Clear out image if it's recycled
 		ivEventImage.setImageResource(android.R.color.transparent);
@@ -80,11 +78,9 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		// Configure the spinner
 		Spinner spinner = (Spinner) v.findViewById(R.id.spAttending);
 		spinner.setOnItemSelectedListener(OnCatSpinnerCL);
-		
-		
-		
+
 		int pos = eventUser.getIsGoing();
-		if((pos >=0 ) && (pos <= 2)) {
+		if ((pos >= 0) && (pos <= 2)) {
 			spinner.setSelection(pos);
 		}
 
@@ -93,28 +89,27 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		swAtEvent.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-		        boolean atEvent = ((Switch) v).isChecked();       
-		        eventUser.setAtEvent(atEvent);
+				boolean atEvent = ((Switch) v).isChecked();
+				eventUser.setAtEvent(atEvent);
 			}
 		});
 		swAtEvent.setChecked(eventUser.getAtEvent());
 		return v;
 	}
 
-    public void onItemSelected(AdapterView<?> parent, View view, 
-            int pos, long id) {
-        // An item was selected.
-    	eventUser.setIsGoing(pos);
-    }
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		// An item was selected.
+		eventUser.setIsGoing(pos);
+	}
 
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
-    
-    public void onSwitchClicked(View view) {
-        boolean atEvent = ((Switch) view).isChecked();       
-        eventUser.setAtEvent(atEvent);
-    }
+	public void onNothingSelected(AdapterView<?> parent) {
+		// Another interface callback
+	}
+
+	public void onSwitchClicked(View view) {
+		boolean atEvent = ((Switch) view).isChecked();
+		eventUser.setAtEvent(atEvent);
+	}
 
 	public static EventDetailsFragment newInstance(String eventUserId) {
 		EventDetailsFragment f = new EventDetailsFragment();
@@ -124,18 +119,18 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 		return f;
 	}
 
-	 private OnItemSelectedListener OnCatSpinnerCL = new AdapterView.OnItemSelectedListener() {
-		    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-		    	if(parent != null) {
-		    		TextView childView = (TextView) parent.getChildAt(0);
-		    		if(childView != null) {
-		    			childView.setTextColor(getResources().getColor(R.color.text));
-		    		}
-		    	}
-		    }
+	private OnItemSelectedListener OnCatSpinnerCL = new AdapterView.OnItemSelectedListener() {
+		public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+			if (parent != null) {
+				TextView childView = (TextView) parent.getChildAt(0);
+				if (childView != null) {
+					childView.setTextColor(getResources().getColor(R.color.text));
+				}
+			}
+		}
 
-		    public void onNothingSelected(AdapterView<?> parent) {
+		public void onNothingSelected(AdapterView<?> parent) {
 
-		    }
-		};
+		}
+	};
 }
