@@ -125,9 +125,13 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 	}
 
 	 private OnItemSelectedListener OnCatSpinnerCL = new AdapterView.OnItemSelectedListener() {
-		    public void onItemSelected(AdapterView<?> parent, View view, int pos,
-		            long id) {
-		        ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.text));
+		    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		    	if(parent != null) {
+		    		TextView childView = (TextView) parent.getChildAt(0);
+		    		if(childView != null) {
+		    			childView.setTextColor(getResources().getColor(R.color.text));
+		    		}
+		    	}
 		    }
 
 		    public void onNothingSelected(AdapterView<?> parent) {
