@@ -39,7 +39,7 @@ public class MeetingListFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_meetings, container, false);
+		View v = inflater.inflate(R.layout.fragment_event_list, container, false);
 		
 		// Assign our view references
 		lvEvents = (PullToRefreshListView) v.findViewById(R.id.lvEvents);

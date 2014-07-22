@@ -26,7 +26,7 @@ public class LoginActivity extends Activity {
 		if (ParseUser.getCurrentUser() != null) {
 			//Log.d("debug", "Current user = " + String.valueOf(ParseUser.getCurrentUser()));
 			// User is already logged in. Skip the login screen
-			Intent i = new Intent(this, MainActivity.class);
+			Intent i = new Intent(this, EventListActivity.class);
 			startActivity(i);
 		}
 		
@@ -45,7 +45,7 @@ public class LoginActivity extends Activity {
 				if (user != null) {
 					// Hooray! The user is logged in. Go to the main activity
 					// page.
-					Intent i = new Intent(context, MainActivity.class);
+					Intent i = new Intent(context, EventListActivity.class);
 					startActivity(i);
 				} else {
 					Toast.makeText(context, "Invalid credentials.  Try again!",

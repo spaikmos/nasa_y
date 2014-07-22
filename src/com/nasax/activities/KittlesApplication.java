@@ -11,7 +11,7 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseObject;
 
-public class NasaXApplication extends Application {
+public class KittlesApplication extends Application {
 
 	@Override
 	public void onCreate() {

@@ -36,7 +36,7 @@ public class AttendeeDetailFragment extends DialogFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.activity_attendee_detail, container, false);
+		View v = inflater.inflate(R.layout.fragment_attendee_detail, container, false);
 
 		EventUser eventUser = null;
 		String eventUserId = getArguments().getString("eventUserId");

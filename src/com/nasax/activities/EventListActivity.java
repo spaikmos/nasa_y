@@ -23,14 +23,14 @@ import com.parse.ParseUser;
 
 import eu.livotov.zxscan.ZXScanHelper;
 
-public class MainActivity extends FragmentActivity {
+public class EventListActivity extends FragmentActivity {
 	static final int ZXSCAN_CODE = 12345;
 	Context context;
 
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.activity_event_list);
 		ParseAnalytics.trackAppOpened(getIntent());
 		context = this;
 	}
@@ -47,7 +47,7 @@ public class MainActivity extends FragmentActivity {
 		// Handle presses on the action bar items
 		switch (item.getItemId()) {
 		case R.id.miEventList:
-			Intent i = new Intent(this, MainActivity.class);
+			Intent i = new Intent(this, EventListActivity.class);
 			startActivity(i);
 			return true;
 		case R.id.miAddEvent:
@@ -55,7 +55,7 @@ public class MainActivity extends FragmentActivity {
 			ZXScanHelper.scan(this, ZXSCAN_CODE);
 			return true;
 		case R.id.miProfile:
-			Intent i2 = new Intent(this, EditProfile.class);
+			Intent i2 = new Intent(this, EditProfileActivity.class);
 			startActivity(i2);
 			return true;
 		case R.id.miLogout:

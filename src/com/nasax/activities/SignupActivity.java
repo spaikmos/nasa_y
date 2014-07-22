@@ -68,7 +68,7 @@ public class SignupActivity extends Activity {
 								if (user != null) {
 									// Hooray! The user is logged in. Go to the main activity
 									// page.
-									Intent i = new Intent(context, MainActivity.class);
+									Intent i = new Intent(context, EventListActivity.class);
 									startActivity(i);
 								} else {
 									Toast.makeText(context, "Invalid credentials.  Try again!",

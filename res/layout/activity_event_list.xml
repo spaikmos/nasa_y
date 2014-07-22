@@ -14,6 +14,6 @@
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_meetings" />
+        tools:layout="@layout/fragment_event_list" />
 
 </RelativeLayout>

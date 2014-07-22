@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.parse.ParseUser;
 
 
-public class EditProfile extends FragmentActivity {
+public class EditProfileActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
