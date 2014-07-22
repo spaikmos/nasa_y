@@ -52,6 +52,7 @@ public class EventActivity extends FragmentActivity {
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		try {
 			EventUser eventUser = (EventUser)query.getFirst();
+			eventUser.pinInBackground(null);
 			eventUserId = eventUser.getObjectId();
 		} catch (ParseException e) {
 			e.printStackTrace();

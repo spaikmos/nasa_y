@@ -21,9 +21,9 @@ import com.parse.ParseException;
 import com.parse.ParseImageView;
 import com.parse.ParseUser;
 
-public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {	
+public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 	private Context context;
-	
+
 	public EventUserArrayAdapter(Context ctext, List<EventUser> eventUsers) {
 		super(ctext, 0, eventUsers);
 		context = ctext;
@@ -34,7 +34,7 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		// Get the data item for position
 		EventUser eventUser = getItem(position);
 		ParseUser attendee = eventUser.getUser();
-		
+
 		// Find or inflate the template
 		View v;
 		if (convertView == null) {
@@ -47,7 +47,8 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		ParseImageView ivProfileImage = (ParseImageView) v.findViewById(R.id.ivProfileImage);
 		TextView tvUsername = (TextView) v.findViewById(R.id.tvUsername);
 		// Clear out image if it's recycled
-		ivProfileImage.setImageResource(android.R.color.transparent);;
+		ivProfileImage.setImageResource(android.R.color.transparent);
+		;
 		// Populate views with data
 		// Load the image
 		// The placeholder will be used before and during the fetch, to be
@@ -64,31 +65,32 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		});
 		tvUsername.setText(attendee.getUsername());
 		drawStatus(v, eventUser.getAtEvent(), eventUser.getIsGoing());
-		drawRssi(v, randRssi(), eventUser.getAtEvent());
-		
+		drawRssi(v, randRssi(), eventUser.getAtEvent(), attendee);
+
 		// Set OnClickListener for the whole line
 		v.setTag(eventUser.getObjectId());
 		v.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO:  Make the attendee detail a modal overlay instead of a separate activity
+				// TODO: Make the attendee detail a modal overlay instead of a
+				// separate activity
 				Intent i = new Intent(getContext(), AttendeeDetail.class);
 				i.putExtra("eventUserId", (String) v.getTag());
 				v.getContext().startActivity(i);
-			}			
+			}
 		});
 
 		return v;
 	}
-	
+
 	private void drawStatus(View v, Boolean atEvent, int isGoing) {
 		TextView tvStatus = (TextView) v.findViewById(R.id.tvStatus);
 		String status;
 
-		if(atEvent == true) {
+		if (atEvent == true) {
 			status = "I'm already here!";
 		} else {
-			switch(isGoing) {
+			switch (isGoing) {
 			case 0:
 				status = "I'll be there!";
 				break;
@@ -103,20 +105,20 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 				break;
 			}
 		}
-		
+
 		tvStatus.setText(status);
 	}
-	
-	private void drawRssi(View v, int rssi, Boolean atEvent) {
+
+	private void drawRssi(View v, int rssi, Boolean atEvent, ParseUser attendee) {
 		ImageView ivRssi = (ImageView) v.findViewById(R.id.ivRssi);
 		TextView tvRssi = (TextView) v.findViewById(R.id.tvRssi);
 		int color;
 		int icon;
-		
-		if(rssi < -63) {
+
+		if (rssi < -63) {
 			color = R.color.reddark;
 			icon = R.drawable.ic_launcher_wifi0;
-		} else if(rssi < -56) {
+		} else if (rssi < -56) {
 			color = R.color.yellowdark;
 			icon = R.drawable.ic_launcher_wifi2;
 		} else {
@@ -124,7 +126,7 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 			icon = R.drawable.ic_launcher_wifi3;
 		}
 
-		if(atEvent) {
+		if (atEvent && (attendee.equals(ParseUser.getCurrentUser()) == false)) {
 			ivRssi.setImageDrawable(context.getResources().getDrawable(icon));
 			tvRssi.setText(String.valueOf(rssi));
 			tvRssi.setTextColor(context.getResources().getColor(color));
@@ -133,17 +135,17 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 			tvRssi.setText(null);
 		}
 	}
-	
+
 	private static int randRssi() {
-	    Random rand = new Random();
-	    int max = -50;
-	    int min = -70;
+		Random rand = new Random();
+		int max = -50;
+		int min = -70;
 
-	    // nextInt is normally exclusive of the top value,
-	    // so add 1 to make it inclusive
-	    int randomNum = rand.nextInt((max - min) + 1) + min;
+		// nextInt is normally exclusive of the top value,
+		// so add 1 to make it inclusive
+		int randomNum = rand.nextInt((max - min) + 1) + min;
 
-	    return randomNum;
+		return randomNum;
 	}
 
 }

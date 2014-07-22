@@ -96,6 +96,7 @@ public class MainActivity extends FragmentActivity {
 										eventUser.put("event", event);
 										eventUser.put("user",  ParseUser.getCurrentUser());
 										eventUser.saveInBackground();
+										eventUser.pinInBackground(null);
 										Toast.makeText(context,  "Added " + event.getEventName(), Toast.LENGTH_LONG).show();
 									}
 								} else {
