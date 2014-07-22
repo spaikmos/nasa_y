@@ -36,7 +36,7 @@ public class AttendeeListFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		eventId = getArguments().getString("eventId");
 		eventUsers = new ArrayList<EventUser>();
-		aEventUsers = new EventUserArrayAdapter(getActivity(), eventUsers);
+		aEventUsers = new EventUserArrayAdapter(getActivity(), eventUsers, getActivity().getSupportFragmentManager());
 	}
 
 	@Override

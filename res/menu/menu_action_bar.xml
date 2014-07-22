@@ -20,7 +20,7 @@
         android:icon="@drawable/ic_action_profile"
         android:onClick="onOptionsItemSelected"
         android:showAsAction="ifRoom"
-        android:title="Profile">
+        android:title="Edit Profile">
     </item>
     <item
         android:id="@+id/miEventProfile"

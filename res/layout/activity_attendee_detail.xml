@@ -11,14 +11,9 @@
         <com.parse.ParseImageView
             android:id="@+id/ivProfilePic"
             style="@style/ProfilePic"
+            android:layout_alignParentLeft="false"
+            android:layout_centerHorizontal="true"
             android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:id="@+id/tvAttendeeUsername"
-            style="@style/TvTitle"
-            android:layout_alignTop="@+id/ivProfilePic"
-            android:layout_toRightOf="@+id/ivProfilePic"
-            android:text="Username" />
 
        <TextView
             android:id="@+id/tv1"

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import android.content.Context;
-import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,8 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nasax.activities.AttendeeDetail;
 import com.nasax.activities.R;
+import com.nasax.fragments.AttendeeDetailFragment;
 import com.nasax.models.EventUser;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -23,10 +23,12 @@ import com.parse.ParseUser;
 
 public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 	private Context context;
+	private FragmentManager fragmentManager;
 
-	public EventUserArrayAdapter(Context ctext, List<EventUser> eventUsers) {
+	public EventUserArrayAdapter(Context ctext, List<EventUser> eventUsers, FragmentManager fm) {
 		super(ctext, 0, eventUsers);
 		context = ctext;
+		fragmentManager = fm;
 	}
 
 	@Override
@@ -72,11 +74,9 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		v.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO: Make the attendee detail a modal overlay instead of a
-				// separate activity
-				Intent i = new Intent(getContext(), AttendeeDetail.class);
-				i.putExtra("eventUserId", (String) v.getTag());
-				v.getContext().startActivity(i);
+				// Show profile as a modal overlay
+				AttendeeDetailFragment f = AttendeeDetailFragment.newInstance((String)v.getTag());
+				f.show(fragmentManager, "activity_attendee_detail");
 			}
 		});
 
