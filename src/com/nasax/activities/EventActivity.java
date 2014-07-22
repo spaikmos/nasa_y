@@ -29,6 +29,12 @@ public class EventActivity extends FragmentActivity {
 	private static String eventUserId;
 	FragmentPagerAdapter adapterViewPager;
 	
+	private OnKeyEventListener onKeyEventListener;
+
+	public interface OnKeyEventListener {
+		public void onKeyPressed();
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Event event = null;
@@ -91,8 +97,12 @@ public class EventActivity extends FragmentActivity {
 		}
 	}
 
-    public static class MyPagerAdapter extends FragmentPagerAdapter {
-	private static int NUM_ITEMS = 3;
+	public void setOnKeyEventListener(OnKeyEventListener listener) {
+		this.onKeyEventListener = listener;
+	}
+
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+	    private final int NUM_ITEMS = 3;
 		
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -111,7 +121,9 @@ public class EventActivity extends FragmentActivity {
             case 0: // Fragment # 0 - This will show FirstFragment
                 return EventDetailsFragment.newInstance(eventUserId);
             case 1: // Fragment # 0 - This will show FirstFragment different title
-                return AttendeeListFragment.newInstance(eventId);
+                AttendeeListFragment fragment = AttendeeListFragment.newInstance(eventId);
+                setOnKeyEventListener(fragment);
+                return fragment;
             case 2: // Fragment # 1 - This will show SecondFragment
                 return MeetingPicsFragment.newInstance(eventUserId);
             default:
@@ -142,6 +154,9 @@ public class EventActivity extends FragmentActivity {
 	       switch (keyCode) {
 	       case KeyEvent.KEYCODE_VOLUME_UP:
 	       case KeyEvent.KEYCODE_VOLUME_DOWN:
+               if (onKeyEventListener != null) {
+                   onKeyEventListener.onKeyPressed();
+               }
 	    	   Toast.makeText(this,  "Key code = " + String.valueOf(keyCode), Toast.LENGTH_LONG).show();
 	           return true;
 	       default:

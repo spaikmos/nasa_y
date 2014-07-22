@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nasax.activities.R;
+import com.nasax.activities.EventActivity.OnKeyEventListener;
 import com.nasax.adapters.EventUserArrayAdapter;
 import com.nasax.listeners.EndlessScrollListener;
 import com.nasax.models.Event;
@@ -24,7 +25,7 @@ import com.parse.ParseQuery;
 import eu.erikw.PullToRefreshListView;
 import eu.erikw.PullToRefreshListView.OnRefreshListener;
 
-public class AttendeeListFragment extends Fragment {
+public class AttendeeListFragment extends Fragment implements OnKeyEventListener {
 	private ArrayList<EventUser> eventUsers;
 	private EventUserArrayAdapter aEventUsers;
 	private PullToRefreshListView lvAttendees;
@@ -119,4 +120,11 @@ public class AttendeeListFragment extends Fragment {
 		f.setArguments(args);
 		return f;
 	}
+
+    @Override
+    public void onKeyPressed() {
+        if (aEventUsers != null) {
+            aEventUsers.notifyDataSetChanged();
+        }
+    }
 }

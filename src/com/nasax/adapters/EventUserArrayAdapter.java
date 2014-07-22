@@ -50,7 +50,7 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		TextView tvUsername = (TextView) v.findViewById(R.id.tvUsername);
 		// Clear out image if it's recycled
 		ivProfileImage.setImageResource(android.R.color.transparent);
-		;
+
 		// Populate views with data
 		// Load the image
 		// The placeholder will be used before and during the fetch, to be
