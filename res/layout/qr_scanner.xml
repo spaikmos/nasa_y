@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="#80808080"
+        android:background="@color/transparentgrey"
         android:text="Scan QR Code to Add Event"
         android:textColor="@color/text"
         android:textAppearance="?android:attr/textAppearanceLarge" />

@@ -2,6 +2,7 @@
 <resources>
     <color name="text">#2080FF</color>
     <color name="white">#FFFFFF</color>
+    <color name="lightgrey">#D0D0D0</color>
     <color name="grey">#7A7A7A</color>
     <color name="background">#0044AA</color>
     <color name="bluelight">#449DEF</color>
@@ -13,4 +14,5 @@
     <color name="yellowdark">#D0B000</color>
     <color name="reddark">#C00000</color>
     <color name="black">#000000</color>
+    <color name="transparentgrey">#d0404040</color>
 </resources>
