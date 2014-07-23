@@ -1,6 +1,5 @@
 package com.nasax.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -32,9 +31,5 @@ public class EditProfileActivity extends FragmentActivity {
 		} else {
 			return true;
 		}
-	}
-
-	protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-		MyActionBar.onActivityResult(this, requestCode, resultCode, data);
 	}
 }

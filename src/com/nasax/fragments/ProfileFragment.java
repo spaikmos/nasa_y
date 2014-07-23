@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nasax.activities.R;
+import com.nasax.models.MyActionBar;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -216,6 +217,7 @@ public class ProfileFragment extends Fragment {
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Log.d("debug", "onActivityResult() called");
 		switch (requestCode) {
 		case CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE:
 			Log.d("debug", "processing camera data");
@@ -256,7 +258,7 @@ public class ProfileFragment extends Fragment {
 				
 				// get byte array here
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
-				takenImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);			
+				takenImage.compress(Bitmap.CompressFormat.JPEG, 10, stream);			
 				byte[] array = stream.toByteArray();
 
 				// TODO: Set filename to username + .jpg
@@ -273,6 +275,7 @@ public class ProfileFragment extends Fragment {
 			}
 			break;
 		case PICK_PHOTO_CODE:
+			Log.d("debug", "PICK_PHOTO_CODE");
 			if ((resultCode == Activity.RESULT_OK) && (data != null)) {
 				Uri photoUri = data.getData();
 				Log.d("debug", "gallery Uri = " + photoUri.toString());
@@ -283,14 +286,13 @@ public class ProfileFragment extends Fragment {
 							getActivity().getContentResolver(), photoUri);
 
 					ByteArrayOutputStream stream = new ByteArrayOutputStream();
-					selectedImage.compress(Bitmap.CompressFormat.JPEG, 100,
+					selectedImage.compress(Bitmap.CompressFormat.JPEG, 10,
 							stream);
 					// get byte array here
 					byte[] array = stream.toByteArray();
 
 					// TODO: Set filename to username + .jpg
-					final ParseFile file = new ParseFile("galleryPic.jpg",
-							array);
+					final ParseFile file = new ParseFile("galleryPic.jpg", array);
 					file.saveInBackground(new SaveCallback() {
 						@Override
 						public void done(ParseException arg0) {
@@ -312,7 +314,10 @@ public class ProfileFragment extends Fragment {
 			break;
 
 		default:
-			// Exit early
+			// TODO:  This is such a bad hack.  We really ought to handle the action bar in the
+			//	EditProfileActivity.  If the activity doesn't handle the requestCode, then it 
+			//	should be sent into the fragment somehow.  
+			MyActionBar.onActivityResult(getActivity(), requestCode, resultCode, data);
 			return;
 		}
 	}
