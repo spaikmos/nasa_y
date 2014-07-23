@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.ParseUser;
+import com.nasax.models.MyActionBar;
 
 
 public class EditProfileActivity extends FragmentActivity {
@@ -20,24 +20,21 @@ public class EditProfileActivity extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+		getMenuInflater().inflate(R.menu.menu_action_bar_edit_profile, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle presses on the action bar items
-		switch (item.getItemId()) {
-		case R.id.miProfile:
-			// Do nothing in the profile view
-			return true;
-		case R.id.miLogout:
-			ParseUser.logOut();
-			Intent i = new Intent(this, LoginActivity.class);
-			startActivity(i);
-			return true;
-		default:
+		if (MyActionBar.optionSelected(this, item, null) == false) {
+			// MyActionBar didn't handle this.  Kick it up to the parent class.
 			return super.onOptionsItemSelected(item);
+		} else {
+			return true;
 		}
+	}
+
+	protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+		MyActionBar.onActivityResult(this, requestCode, resultCode, data);
 	}
 }

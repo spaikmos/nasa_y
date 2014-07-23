@@ -1,14 +1,18 @@
 package com.nasax.activities;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.nasax.fragments.ProfileAclFragment;
 import com.nasax.models.EventUser;
+import com.nasax.models.MyActionBar;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseImageView;
@@ -90,4 +94,26 @@ public class EventProfileActivity extends FragmentActivity {
     	etNote.setText(null);
     	onSaveButtonClick(v);
     }
+    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_action_bar_event_profile, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (MyActionBar.optionSelected(this, item, null) == false) {
+			// MyActionBar didn't handle this.  Kick it up to the parent class.
+			return super.onOptionsItemSelected(item);
+		} else {
+			return true;
+		}
+	}
+
+	protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+		MyActionBar.onActivityResult(this, requestCode, resultCode, data);
+	}
+
 }

@@ -19,6 +19,7 @@ import com.nasax.fragments.EventDetailsFragment;
 import com.nasax.fragments.MeetingPicsFragment;
 import com.nasax.models.Event;
 import com.nasax.models.EventUser;
+import com.nasax.models.MyActionBar;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -32,7 +33,7 @@ public class EventActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Event event = null;
-		
+
 		super.onCreate(savedInstanceState);
 		eventId = getIntent().getStringExtra("eventId");
 		
@@ -68,27 +69,22 @@ public class EventActivity extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+		getMenuInflater().inflate(R.menu.menu_action_bar_event, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle presses on the action bar items
-		switch (item.getItemId()) {
-		case R.id.miProfile:
-			Intent i = new Intent(this, EventProfileActivity.class);
-			i.putExtra("eventUserId", eventUserId);
-			startActivity(i);
-			return true;
-		case R.id.miLogout:
-			ParseUser.logOut();
-			Intent i2 = new Intent(this, LoginActivity.class);
-			startActivity(i2);
-			return true;
-		default:
+		if (MyActionBar.optionSelected(this, item, eventUserId) == false) {
+			// MyActionBar didn't handle this.  Kick it up to the parent class.
 			return super.onOptionsItemSelected(item);
+		} else {
+			return true;
 		}
+	}
+
+	protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+		MyActionBar.onActivityResult(this, requestCode, resultCode, data);
 	}
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
