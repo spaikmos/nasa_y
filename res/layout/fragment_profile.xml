@@ -10,20 +10,6 @@
             android:id="@+id/ivProfilePic"
             style="@style/ProfilePic"
             android:src="@drawable/ic_launcher" />
-        
-        <Button
-            android:id="@+id/btnCamera"
-            style="@style/Button"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/ivProfilePic"
-            android:text="Camera" />
-
-        <Button
-            android:id="@+id/btnGallery"
-            style="@style/Button"
-            android:layout_below="@+id/ivProfilePic"
-            android:layout_toRightOf="@+id/btnCamera"
-            android:text="Gallery" />
 
         <TextView
             android:id="@+id/tvUsername"
@@ -32,10 +18,26 @@
             android:layout_toRightOf="@+id/ivProfilePic"
             android:text="Username" />
 
+        <Button
+            android:id="@+id/btnCamera"
+            style="@style/Button"
+            android:layout_below="@+id/tvUsername"
+            android:layout_toRightOf="@+id/ivProfilePic"
+            android:layout_margin="10dp"
+            android:text="Camera" />
+
+        <Button
+            android:id="@+id/btnGallery"
+            style="@style/Button"
+            android:layout_below="@+id/btnCamera"
+            android:layout_toRightOf="@+id/ivProfilePic"
+            android:layout_margin="10dp"
+            android:text="Gallery" />
+
         <TextView
             android:id="@+id/tv1"
             style="@style/TvHeader"
-            android:layout_below="@+id/btnCamera"
+            android:layout_below="@+id/ivProfilePic"
             android:text="Name" />
 
         <EditText
@@ -129,6 +131,7 @@
             style="@style/EtField"
             android:layout_below="@+id/tv8"
             android:hint="About..." />
+
         <Button
             android:id="@+id/btnSave"
             style="@style/Button"
