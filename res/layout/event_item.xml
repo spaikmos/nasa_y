@@ -1,37 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/listbackground"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/listbackground" >
 
     <com.parse.ParseImageView
         android:id="@+id/ivEventImage"
         style="@style/ListPic"
         android:src="@drawable/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tvEventTitle"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/ivEventImage"
-        android:text="Event Title" />
-
-    <TextView
-        android:id="@+id/tvEventLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvEventTitle"
-        android:layout_below="@+id/tvEventTitle"
-        android:textColor="@color/text"
-        android:text="Event Location" />
-
-    <TextView
-        android:id="@+id/tvRelativeTimestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivEventImage"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Relative Timestamp" />
+        android:layout_toRightOf="@+id/ivEventImage" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tvEventTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="Event Title" />
+
+            <TextView
+                android:id="@+id/tvEventLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tvEventTitle"
+                android:layout_below="@+id/tvEventTitle"
+                android:layout_marginTop="5dp"
+                android:text="Event Location"
+                android:textColor="@color/text" />
+
+            <TextView
+                android:id="@+id/tvRelativeTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="10dp"
+                android:text="Relative Timestamp" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

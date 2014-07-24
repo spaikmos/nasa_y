@@ -9,6 +9,13 @@
         android:title="Event List">
     </item>
     <item
+        android:id="@+id/miEventProfile"
+        android:icon="@drawable/ic_launcher_event_profile"
+        android:onClick="onOptionsItemSelected"
+        android:showAsAction="ifRoom"
+        android:title="Event Profile">
+    </item>
+    <item
         android:id="@+id/miAddEvent"
         android:icon="@drawable/ic_launcher_qrcode"
         android:onClick="onOptionsItemSelected"
@@ -21,13 +28,6 @@
         android:onClick="onOptionsItemSelected"
         android:showAsAction="ifRoom"
         android:title="Edit Profile">
-    </item>
-    <item
-        android:id="@+id/miEventProfile"
-        android:icon="@drawable/ic_launcher_event_profile"
-        android:onClick="onOptionsItemSelected"
-        android:showAsAction="ifRoom"
-        android:title="Event Profile">
     </item>
     <item
         android:id="@+id/miLogout"

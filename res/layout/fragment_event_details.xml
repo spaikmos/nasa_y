@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	style="@style/MainLayout" >
+    style="@style/MainLayout" >
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -16,12 +16,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true" >
+                android:layout_alignParentTop="true"
+                android:orientation="vertical" >
 
                 <com.parse.ParseImageView
                     android:id="@+id/ivEventMap"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher" />
 
@@ -29,7 +31,8 @@
                     android:id="@+id/tvEventAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
                     android:text="TextView" />
             </LinearLayout>
 
@@ -40,15 +43,16 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/llLocation"
+                android:layout_marginTop="20dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/tvGoing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/spAttending"
                 android:layout_alignLeft="@+id/spAttending"
                 android:layout_alignParentLeft="true"
-                android:layout_alignBottom="@+id/spAttending"
                 android:text="Going?" />
 
             <Spinner
@@ -64,9 +68,11 @@
                 android:id="@+id/swAtEvent"
                 style="@style/Switch"
                 android:layout_below="@+id/spAttending"
+                android:layout_marginTop="10dp"
                 android:text="Arrived?"
                 android:textOff="NO"
-                android:textOn="YES" />
+                android:textOn="YES"
+                android:textSize="14sp" />
         </RelativeLayout>
     </ScrollView>
 
