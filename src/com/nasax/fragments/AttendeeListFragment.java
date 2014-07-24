@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.nasax.activities.EventActivity.OnKeyEventListener;
 import com.nasax.activities.R;
 import com.nasax.adapters.EventUserArrayAdapter;
 import com.nasax.listeners.EndlessScrollListener;
@@ -24,7 +26,7 @@ import com.parse.ParseQuery;
 import eu.erikw.PullToRefreshListView;
 import eu.erikw.PullToRefreshListView.OnRefreshListener;
 
-public class AttendeeListFragment extends Fragment {
+public class AttendeeListFragment extends Fragment implements OnKeyEventListener {
 	private ArrayList<EventUser> eventUsers;
 	private EventUserArrayAdapter aEventUsers;
 	private PullToRefreshListView lvAttendees;
@@ -119,4 +121,12 @@ public class AttendeeListFragment extends Fragment {
 		f.setArguments(args);
 		return f;
 	}
+
+    @Override
+    public void onKeyPressed(int volume) {
+        if (aEventUsers != null) {
+        	aEventUsers.updateRssi(volume);
+            //aEventUsers.notifyDataSetChanged();
+        }
+    }
 }
