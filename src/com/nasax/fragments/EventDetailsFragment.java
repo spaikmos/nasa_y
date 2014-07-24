@@ -121,6 +121,8 @@ public class EventDetailsFragment extends Fragment implements OnItemSelectedList
 
 	private OnItemSelectedListener OnCatSpinnerCL = new AdapterView.OnItemSelectedListener() {
 		public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+			// TODO:  I'd like to figure out why I'm getting NPE here.  This works around
+			//	the NPE, but doesn't address the root cause.
 			if (parent != null) {
 				TextView childView = (TextView) parent.getChildAt(0);
 				if (childView != null) {

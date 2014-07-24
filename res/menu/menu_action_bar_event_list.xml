@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/miAddEvent"
+        android:icon="@drawable/ic_launcher_qrcode"
+        android:onClick="onOptionsItemSelected"
+        android:showAsAction="ifRoom"
+        android:title="Scan QR Code">
+    </item>
+    <item
+        android:id="@+id/miProfile"
+        android:icon="@drawable/ic_action_profile"
+        android:onClick="onOptionsItemSelected"
+        android:showAsAction="ifRoom"
+        android:title="Edit Profile">
+    </item>
+    <item
+        android:id="@+id/miLogout"
+        android:icon="@drawable/ic_action_logout"
+        android:onClick="onOptionsItemSelected"
+        android:showAsAction="ifRoom|withText"
+        android:title="Logout">
+    </item>
+
+</menu>

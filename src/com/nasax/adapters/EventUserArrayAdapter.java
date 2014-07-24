@@ -24,6 +24,9 @@ import com.parse.ParseUser;
 public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 	private Context context;
 	private FragmentManager fragmentManager;
+	// TODO:  Hack for demo of BLE
+	private View rssiView;
+	private int rssiVal;
 
 	public EventUserArrayAdapter(Context ctext, List<EventUser> eventUsers, FragmentManager fm) {
 		super(ctext, 0, eventUsers);
@@ -114,7 +117,7 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		TextView tvRssi = (TextView) v.findViewById(R.id.tvRssi);
 		int color;
 		int icon;
-
+		
 		if (rssi < -63) {
 			color = R.color.reddark;
 			icon = R.drawable.ic_launcher_wifi0;
@@ -130,6 +133,10 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 			ivRssi.setImageDrawable(context.getResources().getDrawable(icon));
 			tvRssi.setText(String.valueOf(rssi));
 			tvRssi.setTextColor(context.getResources().getColor(color));
+			
+			// TODO:  Hack for BLE demo.  Cache the last RSSI element drawn
+			rssiView = v;
+			rssiVal = rssi;
 		} else {
 			ivRssi.setImageResource(android.R.color.transparent);
 			tvRssi.setText(null);
@@ -148,4 +155,31 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 		return randomNum;
 	}
 
+	// TODO:  Hack for BLE demo.  Modify the RSSI value accordingly.
+	public void updateRssi(int delta) {
+		int rssi = rssiVal + delta;
+		
+		if((rssi >= -70) && (rssi <= -50)) {
+			ImageView ivRssi = (ImageView) rssiView.findViewById(R.id.ivRssi);
+			TextView tvRssi = (TextView) rssiView.findViewById(R.id.tvRssi);
+			int color;
+			int icon;
+			
+			if (rssi < -63) {
+				color = R.color.reddark;
+				icon = R.drawable.ic_launcher_wifi0;
+			} else if (rssi < -56) {
+				color = R.color.yellowdark;
+				icon = R.drawable.ic_launcher_wifi2;
+			} else {
+				color = R.color.greendark;
+				icon = R.drawable.ic_launcher_wifi3;
+			}
+
+			ivRssi.setImageDrawable(context.getResources().getDrawable(icon));
+			tvRssi.setText(String.valueOf(rssi));
+			tvRssi.setTextColor(context.getResources().getColor(color));
+			rssiVal = rssi;
+		}	
+	}
 }
