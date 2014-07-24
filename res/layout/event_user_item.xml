@@ -9,39 +9,62 @@
         style="@style/ListPic"
         android:src="@drawable/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tvUsername"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/ivProfileImage"
-        android:text="Username" />
-
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvUsername"
-        android:layout_below="@+id/tvUsername"
-        android:textColor="@color/text"
-        android:text="Status" />
-
-    <ImageView
-        android:id="@+id/ivRssi"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/ivProfileImage"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/ic_launcher_wifi2" />
+        android:layout_toRightOf="@+id/ivProfileImage" >
 
-    <TextView
-        android:id="@+id/tvRssi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignLeft="@+id/ivRssi"
-        android:layout_below="@+id/ivRssi"
-        android:gravity="center_horizontal"
-        android:text="RSSI" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tvUsername"
+                android:layout_below="@+id/tvUsername"
+                android:layout_marginTop="5dp"
+                android:text="Status"
+                android:textColor="@color/text" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp" >
+
+            <ImageView
+                android:id="@+id/ivRssi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_launcher_wifi2" />
+
+            <TextView
+                android:id="@+id/tvRssi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/ivRssi"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/ivRssi"
+                android:gravity="center_horizontal"
+                android:text="RSSI" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
