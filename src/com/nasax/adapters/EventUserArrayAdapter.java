@@ -154,32 +154,46 @@ public class EventUserArrayAdapter extends ArrayAdapter<EventUser> {
 
 		return randomNum;
 	}
+	
+	private void randRssiDelta(int delta) {
+		Random rand = new Random();
+
+		// Pick an RSSI value between 1 and 3
+		delta *= rand.nextInt(3) + 1;
+		int newRssi = rssiVal + delta;
+		
+		if(newRssi < -70) {
+			newRssi = -70;
+		} else if(newRssi > -50) {
+			newRssi = -50;
+		}
+		
+		rssiVal = newRssi;
+	}
 
 	// TODO:  Hack for BLE demo.  Modify the RSSI value accordingly.
 	public void updateRssi(int delta) {
-		int rssi = rssiVal + delta;
+		ImageView ivRssi = (ImageView) rssiView.findViewById(R.id.ivRssi);
+		TextView tvRssi = (TextView) rssiView.findViewById(R.id.tvRssi);
+		int color;
+		int icon;
 		
-		if((rssi >= -70) && (rssi <= -50)) {
-			ImageView ivRssi = (ImageView) rssiView.findViewById(R.id.ivRssi);
-			TextView tvRssi = (TextView) rssiView.findViewById(R.id.tvRssi);
-			int color;
-			int icon;
-			
-			if (rssi < -63) {
-				color = R.color.reddark;
-				icon = R.drawable.ic_launcher_wifi0;
-			} else if (rssi < -56) {
-				color = R.color.yellowdark;
-				icon = R.drawable.ic_launcher_wifi2;
-			} else {
-				color = R.color.greendark;
-				icon = R.drawable.ic_launcher_wifi3;
-			}
+		// Generate new RSSI based on volume direction
+		randRssiDelta(delta);
+		
+		if (rssiVal < -63) {
+			color = R.color.reddark;
+			icon = R.drawable.ic_launcher_wifi0;
+		} else if (rssiVal < -56) {
+			color = R.color.yellowdark;
+			icon = R.drawable.ic_launcher_wifi2;
+		} else {
+			color = R.color.greendark;
+			icon = R.drawable.ic_launcher_wifi3;
+		}
 
-			ivRssi.setImageDrawable(context.getResources().getDrawable(icon));
-			tvRssi.setText(String.valueOf(rssi));
-			tvRssi.setTextColor(context.getResources().getColor(color));
-			rssiVal = rssi;
-		}	
+		ivRssi.setImageDrawable(context.getResources().getDrawable(icon));
+		tvRssi.setText(String.valueOf(rssiVal));
+		tvRssi.setTextColor(context.getResources().getColor(color));
 	}
 }
